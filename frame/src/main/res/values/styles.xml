@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TextTitle">
+        <item name="android:textColor">@color/text_accent</item>
+        <item name="android:textSize">@dimen/sub_big_text</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextContent">
+        <item name="android:textColor">@color/text_default</item>
+        <item name="android:textSize">@dimen/medium_text</item>
+        <item name="android:lineSpacingMultiplier">1.3</item>
+    </style>
+
+    <style name="TextItemTitle">
+        <item name="android:textColor">@color/text_accent</item>
+        <item name="android:textSize">@dimen/medium_text</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextItemContent">
+        <item name="android:textColor">@color/text_default</item>
+        <item name="android:textSize">@dimen/sub_medium_text</item>
+        <item name="android:lineSpacingMultiplier">1.2</item>
+        <item name="android:paddingTop">@dimen/small_spacing</item>
+        <item name="android:paddingBottom">@dimen/small_spacing</item>
+    </style>
+
+
+</resources>

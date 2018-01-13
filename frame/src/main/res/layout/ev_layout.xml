@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include android:id="@+id/layout_failed"
+        android:visibility="gone"
+        layout="@layout/ev_fail"
+             android:layout_gravity="center"
+             android:layout_height="wrap_content"
+             android:layout_width="wrap_content"/>
+
+    <include android:id="@+id/layout_no_connection"
+             android:visibility="gone"
+             layout="@layout/ev_no_connection"
+             android:layout_gravity="center"
+             android:layout_height="wrap_content"
+             android:layout_width="wrap_content"/>
+
+    <include android:id="@+id/layout_loading"
+             android:visibility="gone"
+             layout="@layout/ev_loading"
+             android:layout_gravity="center"
+             android:layout_height="wrap_content"
+             android:layout_width="wrap_content"/>
+
+    <include android:id="@+id/layout_empty"
+             android:visibility="gone"
+             layout="@layout/ev_empty"
+             android:layout_gravity="center"
+             android:layout_height="wrap_content"
+             android:layout_width="wrap_content"/>
+
+</FrameLayout>

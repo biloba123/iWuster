@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
+              android:gravity="center"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:clickable="true"
+              android:background="?android:attr/selectableItemBackgroundBorderless"
+              tools:ignore="NewApi">
+    <ImageView
+        android:id="@+id/iv_fail"
+        android:layout_width="@dimen/icon_big"
+        android:layout_height="@dimen/icon_big"
+        android:src="@drawable/ic_fail"/>
+    <TextView
+        android:id="@+id/tv_fail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/TextTitle"
+        android:text="@string/load_fail"
+        android:layout_marginTop="@dimen/medium_spacing"/>
+    <TextView
+        android:id="@+id/tv_fail_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_secondary"
+        android:textSize="@dimen/medium_text"
+        android:text="@string/retry_later"
+        android:layout_marginTop="@dimen/small_spacing"/>
+</LinearLayout>
