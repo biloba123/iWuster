@@ -1,4 +1,4 @@
-package com.lvqingyang.iwuster;
+package com.lvqingyang.iwuster.bean;
 
 /**
  * 一句话功能描述

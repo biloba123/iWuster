@@ -1,4 +1,4 @@
-package com.lvqingyang.iwuster;
+package com.lvqingyang.iwuster.bean;
 
 /**
  * 一句话功能描述
@@ -13,29 +13,66 @@ package com.lvqingyang.iwuster;
 public class Course {
 
     /**
+     * 单位名称
      * dwmc : 理学院
+     *
+     * 开课时间明细
      * kksjmx : ,401,402,,,201,202,
+     *
+     * 教室名称
      * jsmc : 恒大楼三区104,恒大楼三区104
+     *
      * jx02id : 05928
+     *
+     * 课程性质名称
      * kcxzmc : 学科基础平台课程
+     *
      * jcmc : null
+     *
      * sfxyjc : null
+     *
+     * 课程时间
      * kcsj : 40102,20102
+     *
+     * 课堂名称/教学班
      * ktmc : 教学班1659
+     *
+     * 课程属性名
      * kcsxm : 必修
+     *
      * jx0501id : 35D92FE9F5CF4DB7E0531701D20A696B
+     *
+     * 教师姓名
      * jsxm : 刘春梅
+     *
      * kcxzm : 15
+     *
      * szkcfl : null
+     *
+     * 选课阶段
      * xkjd : 一选
+     *
      * kch : 0703606
+     *
+     * 总学时
      * zxs : 24
+     *
      * kcsx : 1
+     *
+     * 开课周次
      * kkzc : 1-6,1-6
+     *
+     * 开课周次明细
      * kkzcmx : ,1,2,3,4,5,6,,,1,2,3,4,5,6,
+     *
+     * 课程名称
      * kcmc : 大学物理B(二)
+     *
+     * 学分
      * xf : 1.5
+     *
      * jx0404id : 201620171001265
+     *
      * xs0101id : 201513137125
      */
 
@@ -55,12 +92,12 @@ public class Course {
     private Object szkcfl;
     private String xkjd;
     private String kch;
-    private int zxs;
+    private float zxs;
     private String kcsx;
     private String kkzc;
     private String kkzcmx;
     private String kcmc;
-    private double xf;
+    private float xf;
     private String jx0404id;
     private String xs0101id;
 
@@ -128,10 +165,6 @@ public class Course {
         this.kch = kch;
     }
 
-    public void setZxs(int zxs) {
-        this.zxs = zxs;
-    }
-
     public void setKcsx(String kcsx) {
         this.kcsx = kcsx;
     }
@@ -146,10 +179,6 @@ public class Course {
 
     public void setKcmc(String kcmc) {
         this.kcmc = kcmc;
-    }
-
-    public void setXf(double xf) {
-        this.xf = xf;
     }
 
     public void setJx0404id(String jx0404id) {
@@ -224,10 +253,6 @@ public class Course {
         return kch;
     }
 
-    public int getZxs() {
-        return zxs;
-    }
-
     public String getKcsx() {
         return kcsx;
     }
@@ -244,16 +269,28 @@ public class Course {
         return kcmc;
     }
 
-    public double getXf() {
-        return xf;
-    }
-
     public String getJx0404id() {
         return jx0404id;
     }
 
     public String getXs0101id() {
         return xs0101id;
+    }
+
+    public float getZxs() {
+        return zxs;
+    }
+
+    public void setZxs(float zxs) {
+        this.zxs = zxs;
+    }
+
+    public float getXf() {
+        return xf;
+    }
+
+    public void setXf(float xf) {
+        this.xf = xf;
     }
 
     @Override

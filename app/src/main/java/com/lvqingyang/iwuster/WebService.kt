@@ -40,7 +40,7 @@ fun getResult(funcation: String, soapObject: SoapObject, n: Int): String {
 
 }
 
-internal inline fun <reified T> getYxkc(xh: String, xnxq: String): String {
+internal  fun  getYxkc(xh: String, xnxq: String): String {
     val localSoapObject = SoapObject(nameSpace, "getyxkclb")
     localSoapObject.addProperty("in0", xh)
     localSoapObject.addProperty("in1", xnxq)
