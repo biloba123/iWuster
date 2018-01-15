@@ -1,7 +1,7 @@
 package com.lvqingyang.iwuster.bean;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.litepal.annotation.Column;
+import org.litepal.crud.DataSupport;
 
 /**
  * 一句话功能描述
@@ -14,20 +14,26 @@ import java.util.List;
  * @blog https://biloba123.github.io/
  * @see Course
  */
-public class CourseLite {
+public class CourseLite extends DataSupport {
     private Course course;
+    private long course_id;
     private String name;
+    @Column(defaultValue = "unknown")
     private String room;
     private String time;
     private int startWeek;
     private int endWeek;
+    @Column(defaultValue = "unknown")
     private String teacher;
+
+    public CourseLite() {
+    }
 
     public CourseLite(Course course) {
         this.course = course;
     }
 
-    public CourseLite(Course course, String name, String room, String time, int startWeek, int endWeek, String teacher) {
+    public CourseLite(String name, String room, String time, int startWeek, int endWeek, String teacher) {
         this.course = course;
         this.name = name;
         this.room = room;
@@ -35,59 +41,6 @@ public class CourseLite {
         this.startWeek = startWeek;
         this.endWeek = endWeek;
         this.teacher = teacher;
-    }
-
-    public static List<CourseLite> parseCourse(Course course) {
-        List<CourseLite> courseLites=new ArrayList<>();
-
-        String _name=course.getKcmc();
-        String _week =course.getKkzc();
-        String _time=course.getKcsj();
-        String _room=course.getJsmc();
-        String _teacher=course.getJsxm();
-
-        if(_week !=null && _time!=null){
-            String[] weeks= _week.split(","),
-                    times=_time.split(","),
-                    rooms=null;
-
-            if(_room!=null){
-                rooms=_room.split(",");
-            }
-
-            int multi=weeks.length/times.length;
-            for (int i = 0; i < weeks.length; i++) {
-                CourseLite courseLite=new CourseLite(course);
-                courseLite.setName(_name);
-                courseLite.setTeacher(_teacher);
-
-                if(_room!=null){
-                    courseLite.setRoom(rooms[i/multi]);
-                }
-
-                courseLite.setTime(times[i/multi]);
-
-                String w=weeks[i], sw, ew;
-                if(w.contains("-")){
-                    String[] ws=w.split("-");
-                    sw=ws[0];
-                    ew=ws[1];
-                }else {
-                    sw=ew=w;
-                }
-                courseLite.setStartWeek(Integer.valueOf(sw));
-                courseLite.setEndWeek(Integer.valueOf(ew));
-
-                courseLites.add(courseLite);
-            }
-        }else{
-            CourseLite courseLite=new CourseLite(course);
-            courseLite.setName(_name);
-            courseLite.setTeacher(_teacher);
-            courseLites.add(courseLite);
-        }
-
-        return courseLites;
     }
 
     public String getTeacher() {
@@ -146,15 +99,25 @@ public class CourseLite {
         this.endWeek = endWeek;
     }
 
+    public long getCourse_id() {
+        return course_id;
+    }
+
+    public void setCourse_id(long course_id) {
+        this.course_id = course_id;
+    }
+
     @Override
     public String toString() {
         return "CourseLite{" +
                 "course=" + course +
+                ", course_id=" + course_id +
                 ", name='" + name + '\'' +
                 ", room='" + room + '\'' +
                 ", time='" + time + '\'' +
                 ", startWeek=" + startWeek +
                 ", endWeek=" + endWeek +
+                ", teacher='" + teacher + '\'' +
                 '}';
     }
 }

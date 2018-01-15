@@ -5,5 +5,10 @@
     <color name="colorAccent">#2db7b5</color>
 
     <color name="bg_windows">#fefefe</color>
+    <color name="class_index">#50ededed</color>
+    <color name="text_week">#385772</color>
+    <color name="text_index">#71889b</color>
+    <color name="class_current">#502db7b5</color>
+    <color name="week_div">#80d7d9da</color>
 
 </resources>

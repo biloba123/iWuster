@@ -33,4 +33,8 @@
 
     <dimen name="icon_big">96dp</dimen>
 
+    <dimen name="nav_height">48dp</dimen>
+    <dimen name="toolbar_elevation">4dp</dimen>
+
+
 </resources>

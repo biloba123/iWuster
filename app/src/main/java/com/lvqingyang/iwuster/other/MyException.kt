@@ -1,4 +1,4 @@
-package com.lvqingyang.frame.i
+package com.lvqingyang.iwuster.other
 
 /**
  * 一句话功能描述
@@ -6,12 +6,11 @@ package com.lvqingyang.frame.i
  * @author Lv Qingyang
  * @see 相关类/方法
  * @since
- * @date 2018/1/13
+ * @date 2018/1/15
  * @email biloba12345@gamil.com
  * @github https://github.com/biloba123
  * @blog https://biloba123.github.io/
  */
-interface RequestListener{
-    public fun onSucc(response: String)
-    fun onError(e: Throwable)
-}
+class NoNetworkException : Exception("检查网络连接")
+
+class NoDataException : Exception("无相关数据")

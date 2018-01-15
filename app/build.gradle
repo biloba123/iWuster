@@ -11,7 +11,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        vectorDrawables.useSupportLibrary= true
+        vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
         release {
@@ -42,6 +42,8 @@ dependencies {
     implementation "org.jetbrains.anko:anko-design:$anko_version"
     implementation "org.jetbrains.anko:anko-commons:$anko_version"
     implementation "org.jetbrains.anko:anko-design:$anko_version"
+
+    compile 'org.litepal.android:core:1.6.1'
     compile project(path: ':frame')
 }
 repositories {

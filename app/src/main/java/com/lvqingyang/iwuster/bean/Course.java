@@ -1,5 +1,9 @@
 package com.lvqingyang.iwuster.bean;
 
+import org.litepal.crud.DataSupport;
+
+import java.util.List;
+
 /**
  * 一句话功能描述
  * 功能详细描述
@@ -10,7 +14,7 @@ package com.lvqingyang.iwuster.bean;
  * @github https://github.com/biloba123
  * @blog https://biloba123.github.io/
  */
-public class Course {
+public class Course extends DataSupport {
 
     /**
      * 单位名称
@@ -100,6 +104,7 @@ public class Course {
     private float xf;
     private String jx0404id;
     private String xs0101id;
+    private List<CourseLite> courseLites;
 
     public void setDwmc(String dwmc) {
         this.dwmc = dwmc;
@@ -291,6 +296,14 @@ public class Course {
 
     public void setXf(float xf) {
         this.xf = xf;
+    }
+
+    public List<CourseLite> getCourseLites() {
+        return courseLites;
+    }
+
+    public void setCourseLites(List<CourseLite> courseLites) {
+        this.courseLites = courseLites;
     }
 
     @Override
