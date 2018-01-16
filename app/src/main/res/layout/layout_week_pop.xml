@@ -4,6 +4,7 @@
     android:id="@+id/lv_week"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:overScrollMode="never"
     android:scrollbars="none"
     android:background="@drawable/center_pop_bg"
     android:divider="@color/color_list_separator"

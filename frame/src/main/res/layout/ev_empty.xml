@@ -17,15 +17,8 @@
         android:id="@+id/tv_empty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/TextTitle"
-        android:text="@string/empty"
-        android:layout_marginTop="@dimen/medium_spacing"/>
-    <TextView
-        android:id="@+id/tv_empty_info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:textColor="@color/text_secondary"
         android:textSize="@dimen/medium_text"
-        android:text="@string/empty_info"
-        android:layout_marginTop="@dimen/small_spacing"/>
+        android:text="@string/empty"
+        android:layout_marginTop="@dimen/medium_spacing"/>
 </LinearLayout>

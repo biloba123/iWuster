@@ -1,3 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string-array name="terms">
+        <item>大一上学期</item>
+        <item>大一下学期</item>
+        <item>大二上学期</item>
+        <item>大二下学期</item>
+        <item>大三上学期</item>
+        <item>大三下学期</item>
+        <item>大四上学期</item>
+        <item>大四下学期</item>
+    </string-array>
 </resources>

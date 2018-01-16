@@ -5,4 +5,7 @@
     <string name="title_notifications">消息</string>
     <string name="title_mine">我</string>
     <string name="stu_id">学号</string>
+    <string name="term_week">修改学期/周次</string>
+    <string name="add_course">添加课程</string>
+    <string name="theme">个性化设置</string>
 </resources>

@@ -18,7 +18,8 @@
         android:id="@+id/tv_loading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/TextTitle"
+        android:textColor="@color/text_secondary"
+        android:textSize="@dimen/medium_text"
         android:text="@string/loading"
         android:layout_marginTop="@dimen/medium_spacing"/>
 </LinearLayout>

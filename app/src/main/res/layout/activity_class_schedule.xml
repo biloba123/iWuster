@@ -24,7 +24,7 @@
             android:layout_centerInParent="true"
             android:gravity="center"
             android:drawableEnd="@drawable/ic_down"
-            android:text="第19周"
+            android:text="第1周"
             android:drawableTint="@color/state_color_white"
             android:clickable="true"
             android:focusable="true"/>
@@ -41,6 +41,7 @@
             android:focusable="true"/>
 
         <ImageView
+            android:id="@+id/iv_menu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/ic_add"

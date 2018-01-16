@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:id="@+id/ll_menu"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginEnd="@dimen/small_spacing"
+              android:showDividers="middle"
+              android:divider="@drawable/divider_horizontal"
+              android:background="@drawable/shape_pop">
+
+    <TextView
+        android:id="@+id/item_term_week"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/small_spacing"
+        android:textColor="@color/text_default"
+        android:drawableLeft="@drawable/ic_term"
+        android:drawablePadding="@dimen/small_spacing"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:text="@string/term_week"
+        android:gravity="center_vertical"/>
+
+    <TextView
+        android:id="@+id/item_add_course"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/small_spacing"
+        android:textColor="@color/text_default"
+        android:drawableLeft="@drawable/ic_add_course"
+        android:drawablePadding="@dimen/small_spacing"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:text="@string/add_course"
+        android:gravity="center_vertical"/>
+
+    <TextView
+        android:id="@+id/item_theme"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/small_spacing"
+        android:textColor="@color/text_default"
+        android:drawableLeft="@drawable/ic_theme"
+        android:drawablePadding="@dimen/small_spacing"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:text="@string/theme"
+        android:gravity="center_vertical"/>
+</LinearLayout>

@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#2db7b5</color>
     <color name="colorPrimaryDark">#2db7b5</color>
-    <color name="colorAccent">#2db7b5</color>
+    <color name="colorAccent">#BB9FD661</color>
 
     <color name="bg_windows">#fefefe</color>
     <color name="class_index">#50ededed</color>
