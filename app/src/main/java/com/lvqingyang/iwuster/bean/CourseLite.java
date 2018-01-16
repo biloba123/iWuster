@@ -1,5 +1,8 @@
 package com.lvqingyang.iwuster.bean;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import org.litepal.annotation.Column;
 import org.litepal.crud.DataSupport;
 
@@ -14,7 +17,7 @@ import org.litepal.crud.DataSupport;
  * @blog https://biloba123.github.io/
  * @see Course
  */
-public class CourseLite extends DataSupport {
+public class CourseLite extends DataSupport implements Parcelable {
     private Course course;
     private long course_id;
     private String name;
@@ -120,4 +123,45 @@ public class CourseLite extends DataSupport {
                 ", teacher='" + teacher + '\'' +
                 '}';
     }
+
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeParcelable(this.course, flags);
+        dest.writeLong(this.course_id);
+        dest.writeString(this.name);
+        dest.writeString(this.room);
+        dest.writeString(this.time);
+        dest.writeInt(this.startWeek);
+        dest.writeInt(this.endWeek);
+        dest.writeString(this.teacher);
+    }
+
+    protected CourseLite(Parcel in) {
+        this.course = in.readParcelable(Course.class.getClassLoader());
+        this.course_id = in.readLong();
+        this.name = in.readString();
+        this.room = in.readString();
+        this.time = in.readString();
+        this.startWeek = in.readInt();
+        this.endWeek = in.readInt();
+        this.teacher = in.readString();
+    }
+
+    public static final Parcelable.Creator<CourseLite> CREATOR = new Parcelable.Creator<CourseLite>() {
+        @Override
+        public CourseLite createFromParcel(Parcel source) {
+            return new CourseLite(source);
+        }
+
+        @Override
+        public CourseLite[] newArray(int size) {
+            return new CourseLite[size];
+        }
+    };
 }

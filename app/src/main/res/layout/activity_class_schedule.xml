@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/color_white"
     android:orientation="vertical"
-    tools:context="com.lvqingyang.iwuster.ClassScheduleActivity">
+    tools:context="com.lvqingyang.iwuster.Dean.ClassScheduleActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -15,16 +15,17 @@
         android:layout_height="?attr/actionBarSize">
 
         <TextView
+            android:id="@+id/tv_week"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/sub_big_text"
-            android:textColor="@color/toolbar_icon"
+            android:textColor="@color/state_color_white"
             style="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
             android:layout_centerInParent="true"
             android:gravity="center"
             android:drawableEnd="@drawable/ic_down"
             android:text="第19周"
-            android:drawableTint="@color/toolbar_icon"
+            android:drawableTint="@color/state_color_white"
             android:clickable="true"
             android:focusable="true"/>
 
@@ -35,7 +36,7 @@
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:padding="@dimen/small_spacing"
-            android:tint="@color/toolbar_icon"
+            android:tint="@color/state_color_white"
             android:clickable="true"
             android:focusable="true"/>
 
@@ -46,7 +47,7 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:padding="@dimen/small_spacing"
-            android:tint="@color/toolbar_icon"
+            android:tint="@color/state_color_white"
             android:clickable="true"
             android:focusable="true"/>
     </RelativeLayout>
@@ -54,13 +55,22 @@
     <FrameLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/color_white">
         <ImageView
             android:id="@+id/iv_bg"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"/>
-        <include layout="@layout/fragment_class_schedule"/>
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_back"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_arrow_back"
+            app:fabSize="normal"
+            android:layout_margin="@dimen/medium_spacing"
+            android:layout_gravity="end|bottom"/>
     </FrameLayout>
 
 

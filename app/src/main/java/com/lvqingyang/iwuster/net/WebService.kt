@@ -1,4 +1,4 @@
-package com.lvqingyang.iwuster
+package com.lvqingyang.iwuster.net
 
 import com.lvqingyang.frame.tool.Md5Util
 import org.ksoap2.serialization.SoapObject

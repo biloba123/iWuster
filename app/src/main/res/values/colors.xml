@@ -11,4 +11,22 @@
     <color name="class_current">#502db7b5</color>
     <color name="week_div">#80d7d9da</color>
 
+    <color name="course_color_01">#7F168eea</color>
+    <color name="course_color_02">#7F1fadc5</color>
+    <color name="course_color_03">#7F00a78e</color>
+    <color name="course_color_04">#7F00a950</color>
+    <color name="course_color_05">#7ffbc02d</color>
+    <color name="course_color_06">#7Fff7200</color>
+    <color name="course_color_07">#7Fff4c4c</color>
+    <color name="course_color_08">#7Fea4c89</color>
+    <color name="course_color_09">#7Fa26eea</color>
+    <color name="course_color_10">#7F7fd400</color>
+    <color name="course_color_11">#7Ffc54ba</color>
+    <color name="course_color_12">#7Fff6a6a</color>
+    <color name="course_complete">#7eededed</color>
+
+
+
+
+
 </resources>

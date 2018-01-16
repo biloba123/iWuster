@@ -6,8 +6,8 @@ import com.lvqingyang.frame.helper.jsonToList
 import com.lvqingyang.iwuster.bean.Course
 import com.lvqingyang.iwuster.bean.CourseLite
 import com.lvqingyang.iwuster.bean.Term
-import com.lvqingyang.iwuster.getXnxq
-import com.lvqingyang.iwuster.getYxkc
+import com.lvqingyang.iwuster.net.getXnxq
+import com.lvqingyang.iwuster.net.getYxkc
 import com.lvqingyang.iwuster.other.NoDataException
 import com.lvqingyang.iwuster.other.NoNetworkException
 import org.jetbrains.anko.doAsync
