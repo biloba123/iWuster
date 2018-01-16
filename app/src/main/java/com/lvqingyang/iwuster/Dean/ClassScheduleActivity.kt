@@ -58,7 +58,7 @@ class ClassScheduleActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (savedInstanceState==null) {
-            showCurrentWeekClass()
+//            showCurrentWeekClass()
         }
     }
 
@@ -96,7 +96,7 @@ class ClassScheduleActivity : BaseActivity() {
     }
 
     override fun showData() {
-        tv_week.text="第${mCurrentWeek}周"
+        ev.loading()
     }
 
     private fun initWeekPop() {

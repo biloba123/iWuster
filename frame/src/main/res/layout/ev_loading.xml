@@ -21,5 +21,5 @@
         android:textColor="@color/text_secondary"
         android:textSize="@dimen/medium_text"
         android:text="@string/loading"
-        android:layout_marginTop="@dimen/medium_spacing"/>
+        android:layout_marginTop="@dimen/small_spacing"/>
 </LinearLayout>

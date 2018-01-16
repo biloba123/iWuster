@@ -19,7 +19,7 @@
         android:textColor="@color/text_secondary"
         android:textSize="@dimen/medium_text"
         android:text="@string/check_network"
-        android:layout_marginTop="@dimen/medium_spacing"/>
+        android:layout_marginTop="@dimen/small_spacing"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -29,5 +29,5 @@
         android:text="@string/tap_retry"
         android:drawableLeft="@drawable/ic_retry"
         android:drawablePadding="@dimen/s_small_spacing"
-        android:layout_marginTop="@dimen/small_spacing"/>
+        android:layout_marginTop="@dimen/sub_small_spacing"/>
 </LinearLayout>

@@ -63,6 +63,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"/>
+
+        <com.lvqingyang.frame.view.EmptyView
+            android:id="@+id/ev"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </com.lvqingyang.frame.view.EmptyView>
+
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab_back"
             android:visibility="gone"
