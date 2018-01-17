@@ -7,4 +7,5 @@
     <dimen name="courseItemHeight">52dp</dimen>
     <dimen name="weekItemMarTop">2dp</dimen>
     <dimen name="weekItemMarLeft">1.5dp</dimen>
+    <dimen name="ic_discover_size">28dp</dimen>
 </resources>

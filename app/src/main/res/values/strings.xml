@@ -16,4 +16,23 @@
     <string name="sp_date">sp_date</string>
     <string name="sp_week">sp_week</string>
     <string name="sp_current_week">sp_current_week</string>
+    <string name="dean">掌上教务</string>
+    <string name="calss_schedule">课程表</string>
+    <string name="score">成绩</string>
+    <string name="select_course">选课</string>
+    <string name="evaluation">评教</string>
+    <string name="empty_classroom">空闲教室</string>
+    <string name="credit">学分统计</string>
+    <string name="library">图书馆</string>
+    <string name="book_search">图书搜索</string>
+    <string name="my_borrow">我的借阅</string>
+    <string name="my_library">我的图书馆</string>
+    <string name="school_life">校园生活</string>
+    <string name="card">一卡通</string>
+    <string name="bus">校车时刻</string>
+    <string name="yellow_page">黄页</string>
+    <string name="other_fun">其他功能</string>
+    <string name="class_note">课堂笔记</string>
+    <string name="lost_and_found">失物招领</string>
+    <string name="secret">树洞</string>
 </resources>
