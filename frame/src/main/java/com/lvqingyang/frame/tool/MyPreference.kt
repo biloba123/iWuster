@@ -45,6 +45,12 @@ class MyPreference private constructor(context: Context) {
 
     fun getInt(tag: String, def: Int= DEFAULT_INT) = mSharedPreferences.getInt(tag, def)
 
+    //save and get long
+    fun saveLong(tag: String, value: Long) = mEditor.putLong(tag, value).apply()
+
+
+    fun getLong(tag: String, def: Long= DEFAULT_LONG) = mSharedPreferences.getLong(tag, def)
+
     //save and get bool
     fun saveBool(tag: String, value: Boolean) = mEditor.putBoolean(tag, value).apply()
 
@@ -85,6 +91,7 @@ class MyPreference private constructor(context: Context) {
 
         //default int value
         val DEFAULT_INT = -1
+        val DEFAULT_LONG = 0L
         //default float value
         val DEFAULT_FLOAT = 0f
 

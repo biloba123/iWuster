@@ -1,9 +1,7 @@
 package com.lvqingyang.iwuster.bean;
 
 /**
- * 一句话功能描述
- * 功能详细描述
- *
+ * 学期
  * @author Lv Qingyang
  * @date 2018/1/13
  * @email biloba12345@gamil.com

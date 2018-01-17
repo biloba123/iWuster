@@ -8,4 +8,12 @@
     <string name="term_week">修改学期/周次</string>
     <string name="add_course">添加课程</string>
     <string name="theme">个性化设置</string>
+    <string name="is_load_course">is_load_course</string>
+    <string name="load_course">加载课表中...</string>
+    <string name="term_loaded">term_loaded</string>
+    <string name="no_data">无相关数据</string>
+    <string name="sp_stu_id">sp_stu_id</string>
+    <string name="sp_date">sp_date</string>
+    <string name="sp_week">sp_week</string>
+    <string name="sp_current_week">sp_current_week</string>
 </resources>

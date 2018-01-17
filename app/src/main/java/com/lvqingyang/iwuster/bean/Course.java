@@ -8,9 +8,7 @@ import org.litepal.crud.DataSupport;
 import java.util.List;
 
 /**
- * 一句话功能描述
- * 功能详细描述
- *
+ *已选课程详情信息
  * @author Lv Qingyang
  * @date 2018/1/13
  * @email biloba12345@gamil.com

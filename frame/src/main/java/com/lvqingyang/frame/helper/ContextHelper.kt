@@ -1,6 +1,7 @@
 package com.lvqingyang.frame.helper
 
 import android.content.Context
+import com.lvqingyang.frame.tool.MyPreference
 import com.lvqingyang.frame.tool.NetWorkUtils
 
 /**
@@ -15,11 +16,21 @@ import com.lvqingyang.frame.tool.NetWorkUtils
  * @blog https://biloba123.github.io/
  */
 
+/**
+ * 获取字符串资源
+ */
 fun Context.str(id: Int)=getString(id)
 
+/**
+ * 判断网络状态
+ */
 fun Context.isNetworkConnected()=NetWorkUtils.isNetworkConnected(this)
 
 fun Context.isWifiConnected()=NetWorkUtils.isWifiConnected(this)
 
 fun Context.isMobileConnected()=NetWorkUtils.isMobileConnected(this)
 
+/**
+ * 获取SharedPreferences
+ */
+fun Context.getPreference()=MyPreference.getInstance(this)

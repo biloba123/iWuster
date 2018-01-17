@@ -1,8 +1,11 @@
 package com.lvqingyang.iwuster.helper
 
 import android.content.Context
+import com.lvqingyang.frame.helper.getPreference
 import com.lvqingyang.frame.helper.isNetworkConnected
 import com.lvqingyang.frame.helper.jsonToList
+import com.lvqingyang.frame.helper.str
+import com.lvqingyang.iwuster.R
 import com.lvqingyang.iwuster.bean.Course
 import com.lvqingyang.iwuster.bean.CourseLite
 import com.lvqingyang.iwuster.bean.Term
@@ -16,8 +19,7 @@ import org.litepal.crud.DataSupport
 import java.util.*
 
 /**
- * 一句话功能描述
- * 功能详细描述
+ * 课表相关工具
  * @author Lv Qingyang
  * @see 相关类/方法
  * @since
@@ -27,8 +29,10 @@ import java.util.*
  * @blog https://biloba123.github.io/
  */
 
+//获取课表显示数据
 fun getShowCourse()= DataSupport.where("time != ?", "").order("time").find(CourseLite::class.java)
 
+//获取指定学期课表
 fun getClassSchedule(
         context: Context,
         stuId: String,
@@ -45,6 +49,7 @@ fun getClassSchedule(
     }
 }
 
+//获取最新学期课表
 fun getLatestClassSchedule(
         context: Context,
         stuId: String,
@@ -64,6 +69,7 @@ fun getLatestClassSchedule(
     }
 }
 
+//获取课表并保存
 fun getClassScheduleAndSave(context: Context, stuId: String, term: String, onSucc: (() -> Unit)?, onError: ((e: Exception) -> Unit)?) {
         try {
             val response = getYxkc(stuId, term)
@@ -79,22 +85,58 @@ fun getClassScheduleAndSave(context: Context, stuId: String, term: String, onSuc
                 DataSupport.saveAll(courseList)
                 DataSupport.saveAll(courseLiteList)
 
-                context.runOnUiThread { onSucc?.invoke() }
+                val myPreference=context.getPreference()
+                myPreference.saveBool(context.str(R.string.is_load_course), true)
+                myPreference.saveLong(context.str(R.string.sp_date), getTime())
+                myPreference.saveInt(context.str(R.string.sp_week), getWeekOfDate())
+                myPreference.saveInt(context.str(R.string.sp_current_week), 1)
+
+                context.runOnUiThread {
+                    val pre=context.getPreference()
+                    pre.saveBool(context.str(R.string.is_load_course), true)
+                    pre.saveInt(context.str(R.string.term_loaded), getWhichTerm(stuId, term))
+                    onSucc?.invoke()
+                }
             }
         } catch (e: Exception) {
             context.runOnUiThread { onError?.invoke(e) }
         }
 }
 
+//获取是哪个学期
+fun getWhichTerm(stuId: String, term: String)
+     =(term.substring(0, 4).toInt()-stuId.substring(0, 4).toInt())*2+(term[term.lastIndex]-'1').toInt()
+
+//更新当前周
+fun getCurrentWeek(context: Context): Int{
+    val myPreference=context.getPreference()
+    val lastTime=myPreference.getLong(context.str(R.string.sp_date))
+    val diff= getDiffDays(lastTime)
+    var currentWeek = myPreference.getInt(context.str(R.string.sp_current_week))
+
+    if(diff!=0) {
+        val week = myPreference.getInt(context.str(R.string.sp_current_week))
+
+        when {
+            diff > 0 -> currentWeek += (diff + week - 1) / 7
+            diff < 0 -> currentWeek += (diff + week - 7) / 7
+        }
+        myPreference.saveLong(context.str(R.string.sp_date), getTime())
+        myPreference.saveInt(context.str(R.string.sp_week), getWeekOfDate())
+        myPreference.saveInt(context.str(R.string.sp_current_week), currentWeek)
+    }
+
+    return currentWeek
+}
 
 
-fun parseCourseList(courses: List<Course>): List<CourseLite> {
+private fun parseCourseList(courses: List<Course>): List<CourseLite> {
     val courseLites=ArrayList<CourseLite>()
     courses.forEach { courseLites.addAll(parseCourse(it)) }
     return courseLites
 }
 
-fun parseCourse(course: Course): List<CourseLite> {
+private fun parseCourse(course: Course): List<CourseLite> {
     val courseLites = ArrayList<CourseLite>()
 
     val _name = course.kcmc

@@ -7,9 +7,7 @@ import org.litepal.annotation.Column;
 import org.litepal.crud.DataSupport;
 
 /**
- * 一句话功能描述
- * 功能详细描述
- *
+ *课表简洁信息
  * @author Lv Qingyang
  * @date 2018/1/14
  * @email biloba12345@gamil.com

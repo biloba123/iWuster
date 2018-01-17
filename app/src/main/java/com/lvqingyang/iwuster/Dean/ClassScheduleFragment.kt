@@ -50,12 +50,17 @@ class ClassScheduleFragment : BaseFragment() {
     private var mWeek=1
     private var mIsCurrentWeek=true
 
+    //实例化Fragment
     companion object {
         const val ARG_COURSE_LITES="ARG_COURSE_LITES"
         const val ARG_WEEK="ARG_WEEK"
         const val ARG_IS_CURRENT_WEEK="ARG_IS_CURRENT_WEEK"
 
-        fun newInstance(clList: List<CourseLite>, week: Int, isCurrentWeek: Boolean=true): ClassScheduleFragment {
+        fun newInstance(
+                clList: List<CourseLite>, //课程数据
+                week: Int,                       //显示周次
+                isCurrentWeek: Boolean=true//是否为当前周
+        ): ClassScheduleFragment {
             val fragment = ClassScheduleFragment()
 
             val args = Bundle()
@@ -82,6 +87,7 @@ class ClassScheduleFragment : BaseFragment() {
             contentPanel.getChildAt(it+1) as RelativeLayout
         }
 
+        //获取传过来的数据
         mCourseLiteList= arguments?.getParcelableArrayList(ARG_COURSE_LITES)!!
         mWeek= arguments?.getInt(ARG_WEEK)!!
         mIsCurrentWeek= arguments?.getBoolean(ARG_IS_CURRENT_WEEK)!!
@@ -90,11 +96,14 @@ class ClassScheduleFragment : BaseFragment() {
     override fun showData() {
         var lastCl: CourseLite?=null
         mCourseLiteList.forEach {
+            //该判断为了保证在同一时间有多节课时，未完结课始终在最上面
             if(!(lastCl!=null&& lastCl!!.time==it.time&&mWeek !in it.startWeek .. it.endWeek)){
                 val week=(it.time[0]-'0').toInt()
                 val tv=CourseTextView(activity!!, it, mWeekItemMarLeft, mWeekItemMarTop,
                         mWeek !in it.startWeek .. it.endWeek)
+                //点击回调
                 tv.setOnClickListener { v ->  context?.toast(it.name) }
+
                 mRlCourses[week-1].addView(tv)
             }
             lastCl=it

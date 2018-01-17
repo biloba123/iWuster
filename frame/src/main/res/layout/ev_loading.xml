@@ -12,8 +12,8 @@
     <com.wang.avi.AVLoadingIndicatorView
         android:id="@+id/av_loading"
         app:indicatorColor="?colorAccent"
-        android:layout_width="@dimen/icon_big"
-        android:layout_height="@dimen/icon_big"/>
+        android:layout_width="64dp"
+        android:layout_height="64dp"/>
     <TextView
         android:id="@+id/tv_loading"
         android:layout_width="wrap_content"

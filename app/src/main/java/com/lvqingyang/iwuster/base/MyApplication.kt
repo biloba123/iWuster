@@ -4,8 +4,7 @@ import android.app.Application
 import org.litepal.LitePal
 
 /**
- * 一句话功能描述
- * 功能详细描述
+ * Application在这里做一些全局配置以及初始化
  * @author Lv Qingyang
  * @see 相关类/方法
  * @since
@@ -19,6 +18,7 @@ class MyApplication: Application() {
         super.onCreate()
         //Litepal初始化
         LitePal.initialize(this)
-        LitePal.getDatabase();
+        //Litepal创建表
+        LitePal.getDatabase()
     }
 }
