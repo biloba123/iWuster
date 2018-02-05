@@ -87,7 +87,7 @@ class MyPreference private constructor(context: Context) {
     }
 
     companion object {
-        private  var sMPreference: MyPreference?=null
+        @Volatile private  var sMPreference: MyPreference?=null
 
         //default int value
         val DEFAULT_INT = -1
@@ -98,10 +98,13 @@ class MyPreference private constructor(context: Context) {
         private val KEY_IS_LOGIN = "IS_LOGIN"
         private val KEY_USER = "USER"
 
-        @Synchronized
         fun getInstance(context: Context): MyPreference {
             if (sMPreference == null) {
-                sMPreference = MyPreference(context)
+                synchronized(MyPreference::class) {
+                    if (sMPreference == null) {
+                        sMPreference = MyPreference(context)
+                    }
+                }
             }
             return sMPreference as MyPreference
         }

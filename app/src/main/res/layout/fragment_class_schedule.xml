@@ -28,7 +28,7 @@
                 android:paddingTop="@dimen/small_spacing"
                 android:paddingBottom="@dimen/small_spacing"
                 android:gravity="center_horizontal|center_vertical"
-                android:background="@color/class_current"
+                android:background="@drawable/shape_current_week"
                 android:textColor="@color/text_week"
                 android:text="周一" />
             <TextView
