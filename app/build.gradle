@@ -41,7 +41,6 @@ dependencies {
     //anko
     implementation "org.jetbrains.anko:anko-design:$anko_version"
     implementation "org.jetbrains.anko:anko-commons:$anko_version"
-    implementation "org.jetbrains.anko:anko-design:$anko_version"
 
     implementation 'com.contrarywind:Android-PickerView:3.2.7'
 

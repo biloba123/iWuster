@@ -1,11 +1,12 @@
 package com.lvqingyang.iwuster
 
-import android.content.Intent
 import android.support.design.widget.BottomNavigationView
 import com.lvqingyang.frame.base.BaseActivity
 import com.lvqingyang.frame.helper.str
 import com.lvqingyang.iwuster.Dean.ClassScheduleActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_discover.*
+import org.jetbrains.anko.startActivity
 
 
 class MainActivity : BaseActivity() {
@@ -15,7 +16,6 @@ class MainActivity : BaseActivity() {
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_discover  -> {
-                startActivity(Intent(this, ClassScheduleActivity::class.java))
             }
         }
 
@@ -25,6 +25,8 @@ class MainActivity : BaseActivity() {
     override fun initListener() {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         navigation.itemIconTintList=null
+
+        di_class_schedule.setOnClickListener { startActivity<ClassScheduleActivity>() }
     }
 
     override fun loadData() {

@@ -90,10 +90,10 @@ public open class EmptyView(context: Context?, attrs: AttributeSet?) : FrameLayo
 
 
 
-    public fun setOnRetryListener(listener: OnClickListener){
+    public fun setOnRetryListener(listener: (View)->Unit){
         layout_no_connection.setOnClickListener{
             loading()
-            listener.onClick(it)
+            listener.invoke(it)
         }
     }
 

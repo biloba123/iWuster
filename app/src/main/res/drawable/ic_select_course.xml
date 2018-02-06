@@ -1,5 +1,0 @@
-<vector android:height="24dp" android:viewportHeight="1024.0"
-    android:viewportWidth="1024.0" android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
-    <path android:fillColor="@color/ic_discover_light_1" android:pathData="M421.7,674.8h120.2V186.4H241.2C141.7,186.4 60.7,295.2 60.7,430.6S141.7,674.8 241.2,674.8v288.9a60.3,60.3 0,0 0,60.3 59.9h59.9a59.5,59.5 0,0 0,60.3 -59.9zM602.2,186.4h60.3v488.8h-60.3z"/>
-    <path android:fillColor="@color/ic_discover_1" android:pathData="M722.4,116.4L910.9,7.2c29.1,-16.9 52.3,-3 52.3,29.9v787c0,33.3 -23.2,47.2 -52.3,29.9l-188.5,-109.2z"/>
-</vector>

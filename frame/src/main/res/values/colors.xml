@@ -57,4 +57,7 @@
     <color name="color_list_separator">#DEE0E2</color>
     <color name="color_list_pressed">#DEE0E2</color>
 
+    <color name="toast_bg">#80000000</color>
+    <color name="toast_bg_loading">#50000000</color>
+    <color name="toast_text">#fefefe</color>
 </resources>

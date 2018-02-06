@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import com.lvqingyang.frame.R
+import com.lvqingyang.frame.helper.getPreference
 
 /**
  * 一句话功能描述
@@ -19,6 +20,7 @@ import com.lvqingyang.frame.R
  */
 abstract class BaseActivity: AppCompatActivity() {
     protected val mFragmentManager=supportFragmentManager
+    protected val myPreference by lazy { getPreference() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

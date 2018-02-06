@@ -21,9 +21,12 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".Dean.ClassScheduleActivity">
+        <activity android:name=".Dean.ClassScheduleActivity"
+            android:parentActivityName=".MainActivity">
         </activity>
         <activity android:name=".Main2Activity">
+        </activity>
+        <activity android:name=".Dean.ClassScheduleStyleActivity">
         </activity>
     </application>
 

@@ -10,12 +10,12 @@
     <string name="theme">个性化设置</string>
     <string name="is_load_course">is_load_course</string>
     <string name="load_course">加载课表中...</string>
-    <string name="term_loaded">term_loaded</string>
+    <string name="sp_term_loaded">term_loaded</string>
     <string name="no_data">无相关数据</string>
     <string name="sp_stu_id">sp_stu_id</string>
     <string name="sp_date">sp_date</string>
     <string name="sp_week">sp_week</string>
-    <string name="sp_current_week">sp_current_week</string>
+    <string name="sp_zc">sp_current_week</string>
     <string name="dean">掌上教务</string>
     <string name="calss_schedule">课程表</string>
     <string name="score">成绩</string>
@@ -35,4 +35,8 @@
     <string name="class_note">课堂笔记</string>
     <string name="lost_and_found">失物招领</string>
     <string name="secret">树洞</string>
+    <string name="current_zc">当前周次</string>
+    <string name="current_term">当前学期</string>
+    <string name="reload_class_schedule">重新加载课表...</string>
+    <string name="load_succ">加载成功</string>
 </resources>

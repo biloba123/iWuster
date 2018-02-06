@@ -41,7 +41,7 @@
                         android:layout_weight="1"
                         android:clickable="true"
                         android:background="?android:attr/selectableItemBackground"
-                        app:icon="@drawable/ic_class_schedule"
+                        app:icon="@drawable/ic_class_schedule_"
                         app:name="@string/calss_schedule"/>
                     <com.lvqingyang.iwuster.view.DiscoverItem
                         android:id="@+id/di_score"
@@ -50,7 +50,7 @@
                         android:layout_weight="1"
                         android:clickable="true"
                         android:background="?android:attr/selectableItemBackground"
-                        app:icon="@drawable/ic_score"
+                        app:icon="@drawable/ic_score_"
                         app:name="@string/score"/>
                     <com.lvqingyang.iwuster.view.DiscoverItem
                         android:id="@+id/di_select_course"
@@ -59,7 +59,7 @@
                         android:layout_weight="1"
                         android:clickable="true"
                         android:background="?android:attr/selectableItemBackground"
-                        app:icon="@drawable/ic_select_course"
+                        app:icon="@drawable/ic_select_course_"
                         app:name="@string/select_course"/>
                     <com.lvqingyang.iwuster.view.DiscoverItem
                         android:id="@+id/di_evaluation"
@@ -68,7 +68,7 @@
                         android:layout_weight="1"
                         android:clickable="true"
                         android:background="?android:attr/selectableItemBackground"
-                        app:icon="@drawable/ic_evaluation"
+                        app:icon="@drawable/ic_evaluation_"
                         app:name="@string/evaluation"/>
                 </LinearLayout>
                 <LinearLayout
@@ -82,7 +82,7 @@
                         android:layout_weight="1"
                         android:clickable="true"
                         android:background="?android:attr/selectableItemBackground"
-                        app:icon="@drawable/ic_empty_classroom"
+                        app:icon="@drawable/ic_empty_classroom_"
                         app:name="@string/empty_classroom"/>
                     <com.lvqingyang.iwuster.view.DiscoverItem
                         android:id="@+id/di_credit"
@@ -91,7 +91,7 @@
                         android:layout_weight="1"
                         android:clickable="true"
                         android:background="?android:attr/selectableItemBackground"
-                        app:icon="@drawable/ic_credit"
+                        app:icon="@drawable/ic_credit_"
                         app:name="@string/credit"/>
                     <View
                         android:layout_width="0dp"
@@ -135,7 +135,7 @@
                     android:layout_weight="1"
                     android:clickable="true"
                     android:background="?android:attr/selectableItemBackground"
-                    app:icon="@drawable/ic_book_search"
+                    app:icon="@drawable/ic_book_search_"
                     app:name="@string/book_search"/>
                     <com.lvqingyang.iwuster.view.DiscoverItem
                         android:id="@+id/di_my_library"
@@ -144,7 +144,7 @@
                         android:layout_weight="1"
                         android:clickable="true"
                         android:background="?android:attr/selectableItemBackground"
-                        app:icon="@drawable/ic_my_library"
+                        app:icon="@drawable/ic_my_library_"
                         app:name="@string/my_library"/>
                     <com.lvqingyang.iwuster.view.DiscoverItem
                         android:id="@+id/di_card"
@@ -153,7 +153,7 @@
                         android:layout_weight="1"
                         android:clickable="true"
                         android:background="?android:attr/selectableItemBackground"
-                        app:icon="@drawable/ic_card"
+                        app:icon="@drawable/ic_card_"
                         app:name="@string/card"/>
                 </LinearLayout>
 
@@ -168,7 +168,7 @@
                         android:layout_weight="1"
                         android:clickable="true"
                         android:background="?android:attr/selectableItemBackground"
-                        app:icon="@drawable/ic_bus"
+                        app:icon="@drawable/ic_bus_"
                         app:name="@string/bus"/>
                     <com.lvqingyang.iwuster.view.DiscoverItem
                         android:id="@+id/di_yellow_page"
@@ -177,7 +177,7 @@
                         android:layout_weight="1"
                         android:clickable="true"
                         android:background="?android:attr/selectableItemBackground"
-                        app:icon="@drawable/ic_yellow_page"
+                        app:icon="@drawable/ic_yellow_page_"
                         app:name="@string/yellow_page"/>
                     <View
                         android:layout_width="0dp"
@@ -218,7 +218,7 @@
                         android:layout_weight="1"
                         android:clickable="true"
                         android:background="?android:attr/selectableItemBackground"
-                        app:icon="@drawable/ic_class_note"
+                        app:icon="@drawable/ic_class_note_"
                         app:name="@string/class_note"/>
                     <com.lvqingyang.iwuster.view.DiscoverItem
                         android:id="@+id/di_lost_and_found"
@@ -227,7 +227,7 @@
                         android:layout_weight="1"
                         android:clickable="true"
                         android:background="?android:attr/selectableItemBackground"
-                        app:icon="@drawable/ic_lost_and_found"
+                        app:icon="@drawable/ic_lost_and_found_"
                         app:name="@string/lost_and_found"/>
                     <com.lvqingyang.iwuster.view.DiscoverItem
                         android:id="@+id/di_secret"
@@ -236,7 +236,7 @@
                         android:layout_weight="1"
                         android:clickable="true"
                         android:background="?android:attr/selectableItemBackground"
-                        app:icon="@drawable/ic_secret"
+                        app:icon="@drawable/ic_secret_"
                         app:name="@string/secret"/>
                 </LinearLayout>
 

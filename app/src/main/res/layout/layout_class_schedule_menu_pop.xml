@@ -10,7 +10,7 @@
               android:background="@drawable/shape_pop">
 
     <TextView
-        android:id="@+id/item_term_week"
+        android:id="@+id/item_week"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="@dimen/small_spacing"
@@ -19,7 +19,20 @@
         android:drawablePadding="@dimen/small_spacing"
         android:background="?android:attr/selectableItemBackground"
         android:clickable="true"
-        android:text="@string/term_week"
+        android:text="@string/current_zc"
+        android:gravity="center_vertical"/>
+
+    <TextView
+        android:id="@+id/item_term"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/small_spacing"
+        android:textColor="@color/text_default"
+        android:drawableLeft="@drawable/ic_current_term"
+        android:drawablePadding="@dimen/small_spacing"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:text="@string/current_term"
         android:gravity="center_vertical"/>
 
     <TextView

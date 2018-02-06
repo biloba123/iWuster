@@ -1,10 +1,12 @@
 package com.lvqingyang.iwuster.helper
 
 import android.content.Context
+import android.util.Log
 import com.lvqingyang.frame.helper.getPreference
 import com.lvqingyang.frame.helper.isNetworkConnected
 import com.lvqingyang.frame.helper.jsonToList
 import com.lvqingyang.frame.helper.str
+import com.lvqingyang.iwuster.BuildConfig
 import com.lvqingyang.iwuster.R
 import com.lvqingyang.iwuster.bean.Course
 import com.lvqingyang.iwuster.bean.CourseLite
@@ -38,11 +40,13 @@ fun getClassSchedule(
         stuId: String,
         term: String,
         onSucc: (()->Unit)?=null,
-        onError: ((e: Exception)->Unit)?=null) {
+        onError: ((e: Exception)->Unit)?=null,
+        zc: Int=1
+) {
 
     if (context.isNetworkConnected()) {
         context.doAsync {
-            getClassScheduleAndSave(context, stuId, term, onSucc, onError)
+            getClassScheduleAndSave(context, stuId, term, onSucc, onError, zc)
         }
     }else {
         onError?.invoke(NoNetworkException())
@@ -54,7 +58,8 @@ fun getLatestClassSchedule(
         context: Context,
         stuId: String,
         onSucc: (()->Unit)?=null,
-        onError: ((e: Exception)->Unit)?=null) {
+        onError: ((e: Exception)->Unit)?=null
+) {
     if (context.isNetworkConnected()) {
         try {
             context.doAsync {
@@ -70,9 +75,17 @@ fun getLatestClassSchedule(
 }
 
 //获取课表并保存
-fun getClassScheduleAndSave(context: Context, stuId: String, term: String, onSucc: (() -> Unit)?, onError: ((e: Exception) -> Unit)?) {
+fun getClassScheduleAndSave(
+        context: Context,
+        stuId: String,
+        term: String,
+        onSucc: (() -> Unit)?,
+        onError: ((e: Exception) -> Unit)?,
+        zc: Int=1
+) {
         try {
             val response = getYxkc(stuId, term)
+            if (BuildConfig.DEBUG) Log.d("CourseHelper", "getClassScheduleAndSave: $term \n"+response)
             if (response == "没有数据") {
                 throw NoDataException()
             } else {
@@ -89,12 +102,10 @@ fun getClassScheduleAndSave(context: Context, stuId: String, term: String, onSuc
                 myPreference.saveBool(context.str(R.string.is_load_course), true)
                 myPreference.saveLong(context.str(R.string.sp_date), getTime())
                 myPreference.saveInt(context.str(R.string.sp_week), getWeekOfDate())
-                myPreference.saveInt(context.str(R.string.sp_current_week), 1)
+                myPreference.saveInt(context.str(R.string.sp_zc), zc)
+                myPreference.saveInt(context.str(R.string.sp_term_loaded), getWhichTerm(stuId, term))
 
                 context.runOnUiThread {
-                    val pre=context.getPreference()
-                    pre.saveBool(context.str(R.string.is_load_course), true)
-                    pre.saveInt(context.str(R.string.term_loaded), getWhichTerm(stuId, term))
                     onSucc?.invoke()
                 }
             }
@@ -107,23 +118,31 @@ fun getClassScheduleAndSave(context: Context, stuId: String, term: String, onSuc
 fun getWhichTerm(stuId: String, term: String)
      =(term.substring(0, 4).toInt()-stuId.substring(0, 4).toInt())*2+(term[term.lastIndex]-'1').toInt()
 
+fun getTerm(stuId: String, term: Int): String{
+    val joinYear=stuId.substring(0, 4).toInt()
+    val year=joinYear+term/2
+    return "${year}-${year+1}-${1+term%2}"
+}
+
 //更新当前周
 fun getCurrentWeek(context: Context): Int{
     val myPreference=context.getPreference()
     val lastTime=myPreference.getLong(context.str(R.string.sp_date))
     val diff= getDiffDays(lastTime)
-    var currentWeek = myPreference.getInt(context.str(R.string.sp_current_week))
+    var currentWeek = myPreference.getInt(context.str(R.string.sp_zc))
+    
 
     if(diff!=0) {
-        val week = myPreference.getInt(context.str(R.string.sp_current_week))
+        val week = myPreference.getInt(context.str(R.string.sp_week))
 
         when {
             diff > 0 -> currentWeek += (diff + week - 1) / 7
             diff < 0 -> currentWeek += (diff + week - 7) / 7
         }
+
         myPreference.saveLong(context.str(R.string.sp_date), getTime())
         myPreference.saveInt(context.str(R.string.sp_week), getWeekOfDate())
-        myPreference.saveInt(context.str(R.string.sp_current_week), currentWeek)
+        myPreference.saveInt(context.str(R.string.sp_zc), currentWeek)
     }
 
     return currentWeek

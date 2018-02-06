@@ -3,9 +3,9 @@
     <color name="colorPrimary">#81c784</color>
     <color name="colorPrimaryDark">#519657</color>
     <color name="colorPrimaryLight">#b2fab4</color>
-    <color name="colorSecondary">#f06292</color>
-    <color name="colorSecondaryDark">#ba2d65</color>
-    <color name="colorSecondaryLight">#ff94c2</color>
+    <color name="colorSecondary">#64b5f6</color>
+    <color name="colorSecondaryDark">#2286c3</color>
+    <color name="colorSecondaryLight">#9be7ff</color>
 
     <color name="bg_windows">#f5f5f5</color>
     <color name="class_index">#50ededed</color>
@@ -28,11 +28,11 @@
     <color name="course_color_12">#7Fff6a6a</color>
     <color name="course_complete">#7eededed</color>
 
-    <color name="ic_discover_1">#ADB4BE</color>
-    <color name="ic_discover_light_1">#C4C8D0</color>
-    <color name="ic_discover_2">#ADB4BE</color>
-    <color name="ic_discover_light_2">#C4C8D0</color>
-    <color name="ic_discover_3">#ADB4BE</color>
-    <color name="ic_discover_light_3">#C4C8D0</color>
+    <color name="ic_discover_1">#bb3bbf9f</color>
+    <color name="ic_discover_light_1">#BB3FD0AD</color>
+    <color name="ic_discover_2">#bb3bbf9f</color>
+    <color name="ic_discover_light_2">#BB3FD0AD</color>
+    <color name="ic_discover_3">#bb3bbf9f</color>
+    <color name="ic_discover_light_3">#BB3FD0AD</color>
 
 </resources>

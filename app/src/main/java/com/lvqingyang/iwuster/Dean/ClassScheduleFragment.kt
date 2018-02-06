@@ -6,6 +6,7 @@ import android.widget.RelativeLayout
 import com.lvqingyang.frame.base.BaseFragment
 import com.lvqingyang.iwuster.R
 import com.lvqingyang.iwuster.bean.CourseLite
+import com.lvqingyang.iwuster.helper.getWeekOfDate
 import com.lvqingyang.iwuster.view.CourseTextView
 import kotlinx.android.synthetic.main.fragment_class_schedule.*
 import org.jetbrains.anko.toast
@@ -94,6 +95,11 @@ class ClassScheduleFragment : BaseFragment() {
     }
 
     override fun showData() {
+        //显示当前是周几
+        if (mIsCurrentWeek) {
+            ll_week_name.getChildAt(getWeekOfDate()).setBackgroundResource(R.drawable.shape_current_week)
+        }
+
         var lastCl: CourseLite?=null
         mCourseLiteList.forEach {
             //该判断为了保证在同一时间有多节课时，未完结课始终在最上面
@@ -107,7 +113,6 @@ class ClassScheduleFragment : BaseFragment() {
                 mRlCourses[week-1].addView(tv)
             }
             lastCl=it
-
         }
     }
 }

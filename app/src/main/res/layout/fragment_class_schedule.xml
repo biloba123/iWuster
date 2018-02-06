@@ -6,7 +6,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
         <LinearLayout
-            android:id="@+id/weekName"
+            android:id="@+id/ll_week_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -27,8 +27,8 @@
                 android:layout_weight="1"
                 android:paddingTop="@dimen/small_spacing"
                 android:paddingBottom="@dimen/small_spacing"
+                android:background="@color/class_index"
                 android:gravity="center_horizontal|center_vertical"
-                android:background="@drawable/shape_current_week"
                 android:textColor="@color/text_week"
                 android:text="周一" />
             <TextView

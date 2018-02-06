@@ -1,6 +1,0 @@
-<vector android:height="24dp" android:viewportHeight="1024.0"
-    android:viewportWidth="1024.0" android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
-    <path android:fillColor="@color/ic_discover_1" android:pathData="M235.3,0h161.1v246.5h-161.1zM627.2,0h161.1v246.5h-161.1zM235.3,381.1h161.1v161.5h-161.1zM434.3,381.1h161.1v161.5h-161.1zM633.7,381.1h161.1v161.5h-161.1zM235.3,616.3h161.1v161.5h-161.1zM434.3,616.3h161.1v161.5h-161.1zM633.7,616.3h161.1v161.5h-161.1z"/>
-    <path android:fillColor="@color/ic_discover_light_1" android:pathData="M454.4,36.3h112v91.4h-112z"/>
-    <path android:fillColor="@color/ic_discover_light_1" android:pathData="M835.9,36.7v91.8a84.2,84.2 0,0 1,51.2 24.6,87.8 87.8,0 0,1 25.4,61.2V845.9a86.6,86.6 0,0 1,-86.2 86.2H196.2A86.6,86.6 0,0 1,110 845.9V214.3A85.8,85.8 0,0 1,135.4 153.1a84.2,84.2 0,0 1,51.2 -24.6V36.7A177.6,177.6 0,0 0,18.6 214.3V845.9a178.5,178.5 0,0 0,177.6 178.1h630A178.5,178.5 0,0 0,1003.9 845.9V214.3A177.6,177.6 0,0 0,835.9 36.7z"/>
-</vector>
