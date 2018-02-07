@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.lvqingyang.frame.helper.getPreference
 
 /**
  * 一句话功能描述
@@ -22,6 +23,7 @@ import android.view.ViewGroup
 abstract class BaseFragment: Fragment() {
 
     private lateinit var mAppCompatActivity: AppCompatActivity
+    protected val myPreference by lazy { activity!!.getPreference() }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

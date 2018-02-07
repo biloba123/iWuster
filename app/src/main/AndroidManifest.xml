@@ -22,11 +22,14 @@
             </intent-filter>
         </activity>
         <activity android:name=".Dean.ClassScheduleActivity"
+                  android:theme="@style/AppTheme.NoActionbar"
+                  android:launchMode="singleTop"
             android:parentActivityName=".MainActivity">
         </activity>
         <activity android:name=".Main2Activity">
         </activity>
-        <activity android:name=".Dean.ClassScheduleStyleActivity">
+        <activity android:name=".Dean.ClassScheduleStyleActivity"
+                  android:launchMode="singleTop">
         </activity>
     </application>
 

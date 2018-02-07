@@ -21,6 +21,8 @@ import com.lvqingyang.frame.tool.NetWorkUtils
  */
 fun Context.str(id: Int)=getString(id)
 
+fun Context.color(id: Int)=resources.getColor(id)
+
 /**
  * 判断网络状态
  */

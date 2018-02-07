@@ -23,38 +23,40 @@ class CourseTextView(
         course: CourseLite,
         marLeft: Int,
         marTop: Int,
+        alpha: Float,
+        corner: Float,
         isComplete: Boolean=false
 ): TextView(context) {
+    private val mColor: Int
 
-    private val mCourseColors: IntArray by lazy {
-        intArrayOf(
-                R.color.course_color_01,
-                R.color.course_color_02,
-                R.color.course_color_03,
-                R.color.course_color_04,
-                R.color.course_color_05,
-                R.color.course_color_06,
-                R.color.course_color_07,
-                R.color.course_color_08,
-                R.color.course_color_09,
-                R.color.course_color_10,
-                R.color.course_color_11,
-                R.color.course_color_12
-        )
+    companion object {
+        private val mCourseColors by lazy {
+            intArrayOf(
+                    R.color.course_color_01,
+                    R.color.course_color_02,
+                    R.color.course_color_03,
+                    R.color.course_color_04,
+                    R.color.course_color_05,
+                    R.color.course_color_06,
+                    R.color.course_color_07,
+                    R.color.course_color_08,
+                    R.color.course_color_09,
+                    R.color.course_color_10,
+                    R.color.course_color_11,
+                    R.color.course_color_12
+            )
+        }
     }
 
     init {
         if (isComplete){
+            mColor=resources.getColor(R.color.course_complete)
             setTextColor(resources.getColor(R.color.color_25_pure_black))
-            background= CourseBgDrawable(
-                    resources.getColor(R.color.course_complete)
-            )
         }else{
+            mColor=resources.getColor(mCourseColors[course.course_id.toInt()%mCourseColors.size])
             setTextColor(resources.getColor(R.color.state_color_white))
-            background= CourseBgDrawable(
-                    resources.getColor(mCourseColors[course.course_id.toInt()%mCourseColors.size])
-            )
         }
+        setBgDrawable(alpha, corner)
 
         isClickable=true
         isFocusable=true
@@ -80,6 +82,10 @@ class CourseTextView(
                 0
         )
         layoutParams=lp
+    }
+
+    public fun setBgDrawable(alpha: Float, corner: Float){
+        background= CourseBgDrawable(mColor, alpha, corner)
     }
 
 }

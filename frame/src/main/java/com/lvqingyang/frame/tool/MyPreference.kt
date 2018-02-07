@@ -45,6 +45,12 @@ class MyPreference private constructor(context: Context) {
 
     fun getInt(tag: String, def: Int= DEFAULT_INT) = mSharedPreferences.getInt(tag, def)
 
+    //save and get float
+    fun saveFloat(tag: String, value: Float) = mEditor.putFloat(tag, value).apply()
+
+
+    fun getFloat(tag: String, def: Float= 0f) = mSharedPreferences.getFloat(tag, def)
+
     //save and get long
     fun saveLong(tag: String, value: Long) = mEditor.putLong(tag, value).apply()
 

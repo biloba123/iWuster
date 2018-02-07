@@ -1,5 +1,7 @@
 package com.lvqingyang.iwuster.Dean
 
+import android.app.Activity
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -28,6 +30,7 @@ class ClassScheduleActivity : BaseActivity() {
 
     //课表真正显示的Fragment
     private var mFragment: ClassScheduleFragment? = null
+    private var mShowFragment: ClassScheduleFragment? = null
     //选择周次的弹出框
     private lateinit var mPopWeek: PopupWindow
     //选择周次弹出框的偏移量，使之在中间显示
@@ -58,9 +61,17 @@ class ClassScheduleActivity : BaseActivity() {
                 //修改周次
                 R.id.item_week -> showSelectWeekPicker()
                 R.id.item_term -> showSelectTermPicker()
+                R.id.item_theme -> startActivityForResult(
+                        ClassScheduleStyleActivity.newIntent(this@ClassScheduleActivity),
+                        REQUEST_STYLE
+                )
             }
         }
 
+    }
+
+    companion object {
+        private val REQUEST_STYLE=0
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -83,9 +94,7 @@ class ClassScheduleActivity : BaseActivity() {
 
         //返回本周
         fab_back.setOnClickListener {
-            if (mIsLoadCourse) {
-                showCurrentWeekClass()
-            }
+            showCurrentWeekClass()
         }
 
         //菜单
@@ -98,6 +107,8 @@ class ClassScheduleActivity : BaseActivity() {
         ev.setOnRetryListener{
             loadCourse()
         }
+
+        iv_back.setOnClickListener { finish() }
     }
 
     override fun loadData() {
@@ -122,7 +133,6 @@ class ClassScheduleActivity : BaseActivity() {
         //成功
         val succ: ()->Unit={
             ev.success()
-            mIsLoadCourse=true
             initCourses()
             showCurrentWeekClass()
         }
@@ -155,7 +165,7 @@ class ClassScheduleActivity : BaseActivity() {
         mCurrentWeek= getCurrentWeek(this)
         mLastWeek=mCurrentWeek
 
-        if (mIsLoadCourse) {//重新加载课表时正确显示
+        if (isReload) {//重新加载课表时正确显示
             mFragment=ClassScheduleFragment.newInstance(mCourseLiteList, mCurrentWeek)
         }else {
             if (mFragment == null) {
@@ -184,13 +194,13 @@ class ClassScheduleActivity : BaseActivity() {
                 if (week==mCurrentWeek) {
                     showCurrentWeekClass()
                 }else {
+                    mShowFragment=ClassScheduleFragment.newInstance(
+                            mCourseLiteList,
+                            week,
+                            false
+                    )
                     getFragmentTransaction()
-                            .replace(R.id.container,
-                                    ClassScheduleFragment.newInstance(
-                                            mCourseLiteList,
-                                            week,
-                                            false)
-                            )
+                            .replace(R.id.container, mShowFragment)
                             .commit()
                     fab_back.visibility= VISIBLE
                 }
@@ -225,6 +235,8 @@ class ClassScheduleActivity : BaseActivity() {
     }
 
     private fun showCurrentWeekClass() {
+        mIsLoadCourse=true
+        mShowFragment=mFragment
         getFragmentTransaction()
                 .replace(R.id.container, mFragment, ClassScheduleFragment::class.simpleName)
                 .commit()
@@ -300,6 +312,18 @@ class ClassScheduleActivity : BaseActivity() {
                 },
                 zc = mCurrentWeek
         )
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        when (requestCode){
+            REQUEST_STYLE -> if(resultCode== Activity.RESULT_OK) {
+                val alpha=myPreference.getFloat(str(R.string.sp_alpha), 0.5f)
+                val corner=myPreference.getFloat(str(R.string.sp_corner), 15f)
+                mShowFragment?.changeCourseBg(alpha, corner)
+                mFragment?.changeCourseBg(alpha, corner)
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data)
     }
 
 }

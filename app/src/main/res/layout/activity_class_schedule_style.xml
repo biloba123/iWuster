@@ -1,10 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/color_white"
     tools:context="com.lvqingyang.iwuster.Dean.ClassScheduleStyleActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/tv_test"
+        android:layout_width="52dp"
+        android:layout_height="108dp"
+        android:padding="@dimen/s_small_spacing"
+        android:layout_margin="@dimen/big_spacing"
+        android:layout_gravity="center_horizontal"
+        android:textSize="12sp"
+        android:textColor="@color/color_white"
+        android:text="Linux内核与程序设计@教三楼409"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="@dimen/card_spacing">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/TextContent"
+            android:text="@string/alpha"
+            android:layout_weight="1"
+            android:textSize="@dimen/medium_text"/>
+
+        <SeekBar
+            android:id="@+id/sb_alpha"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:max="100"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="@dimen/card_spacing">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/TextContent"
+            android:text="@string/corner"
+            android:layout_weight="1"
+            android:textSize="@dimen/medium_text"/>
+
+        <SeekBar
+            android:id="@+id/sb_corner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:max="100"/>
+    </LinearLayout>
+
+</LinearLayout>

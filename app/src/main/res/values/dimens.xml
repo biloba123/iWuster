@@ -3,7 +3,7 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
-    <dimen name="weekItemHeight">55dp</dimen>
+    <dimen name="weekItemHeight">56dp</dimen>
     <dimen name="courseItemHeight">52dp</dimen>
     <dimen name="weekItemMarTop">2dp</dimen>
     <dimen name="weekItemMarLeft">1.5dp</dimen>

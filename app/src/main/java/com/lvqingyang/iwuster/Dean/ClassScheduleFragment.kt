@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.os.Parcelable
 import android.widget.RelativeLayout
 import com.lvqingyang.frame.base.BaseFragment
+import com.lvqingyang.frame.helper.str
 import com.lvqingyang.iwuster.R
 import com.lvqingyang.iwuster.bean.CourseLite
 import com.lvqingyang.iwuster.helper.getWeekOfDate
@@ -27,22 +28,6 @@ import java.util.*
  */
 class ClassScheduleFragment : BaseFragment() {
 
-    private val mCourseColors: IntArray by lazy {
-        intArrayOf(
-                R.color.course_color_01,
-                R.color.course_color_02,
-                R.color.course_color_03,
-                R.color.course_color_04,
-                R.color.course_color_05,
-                R.color.course_color_06,
-                R.color.course_color_07,
-                R.color.course_color_08,
-                R.color.course_color_09,
-                R.color.course_color_10,
-                R.color.course_color_11,
-                R.color.course_color_12
-        )
-    }
     private var mWeekItemMarTop: Int=0
     private var mWeekItemMarLeft: Int=0
     private var mWeekItemHeight: Int=0
@@ -50,6 +35,8 @@ class ClassScheduleFragment : BaseFragment() {
     private lateinit var mCourseLiteList: List<CourseLite>
     private var mWeek=1
     private var mIsCurrentWeek=true
+    private var mCorner=15f
+    private var mAlpha=0.5f
 
     //实例化Fragment
     companion object {
@@ -81,6 +68,8 @@ class ClassScheduleFragment : BaseFragment() {
     }
 
     override fun loadData() {
+        mAlpha=myPreference.getFloat(activity!!.str(R.string.sp_alpha), 0.5f)
+        mCorner=myPreference.getFloat(activity!!.str(R.string.sp_corner), 15f)
         mWeekItemMarTop=resources.getDimensionPixelSize(R.dimen.weekItemMarTop)
         mWeekItemMarLeft=resources.getDimensionPixelSize(R.dimen.weekItemMarLeft)
         mWeekItemHeight=resources.getDimensionPixelSize(R.dimen.weekItemHeight)
@@ -106,6 +95,7 @@ class ClassScheduleFragment : BaseFragment() {
             if(!(lastCl!=null&& lastCl!!.time==it.time&&mWeek !in it.startWeek .. it.endWeek)){
                 val week=(it.time[0]-'0').toInt()
                 val tv=CourseTextView(activity!!, it, mWeekItemMarLeft, mWeekItemMarTop,
+                        mAlpha, mCorner,
                         mWeek !in it.startWeek .. it.endWeek)
                 //点击回调
                 tv.setOnClickListener { v ->  context?.toast(it.name) }
@@ -113,6 +103,16 @@ class ClassScheduleFragment : BaseFragment() {
                 mRlCourses[week-1].addView(tv)
             }
             lastCl=it
+        }
+    }
+
+    public fun changeCourseBg(alpha: Float, corner: Float){
+        mAlpha=alpha
+        mCorner=corner
+        mRlCourses.forEach {
+            for(i in 0 until  it.childCount){
+                (it.getChildAt(i) as CourseTextView).setBgDrawable(mAlpha, mCorner)
+            }
         }
     }
 }
