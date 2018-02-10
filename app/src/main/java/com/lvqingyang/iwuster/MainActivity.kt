@@ -35,7 +35,6 @@ class MainActivity : BaseActivity() {
     }
 
     override fun showData() {
-
     }
 
 }

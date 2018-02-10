@@ -27,6 +27,7 @@ abstract class BaseActivity: AppCompatActivity() {
         savedInstanceState?.let {
             getBundleExtras(savedInstanceState)
         }
+
         setContentView(getLayoutResID())
 
         initListener()

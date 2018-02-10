@@ -2,20 +2,18 @@ package com.lvqingyang.iwuster.Dean
 
 import android.app.Activity
 import android.content.Intent
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
+import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
-import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.PopupWindow
 import com.bigkoo.pickerview.OptionsPickerView
 import com.lvqingyang.frame.base.BaseActivity
-import com.lvqingyang.frame.helper.DisplayHelper
-import com.lvqingyang.frame.helper.str
+import com.lvqingyang.frame.helper.*
 import com.lvqingyang.frame.tool.MyToast
 import com.lvqingyang.iwuster.R
 import com.lvqingyang.iwuster.bean.CourseLite
@@ -33,11 +31,6 @@ class ClassScheduleActivity : BaseActivity() {
     private var mShowFragment: ClassScheduleFragment? = null
     //选择周次的弹出框
     private lateinit var mPopWeek: PopupWindow
-    //选择周次弹出框的偏移量，使之在中间显示
-    private val mPopWeekYoff: Int by lazy{
-        //懒加载是为了在view初始化完成后获取准确宽度
-        (tv_week.width-DisplayHelper.dpToPx(140))/2
-    }
     //右侧menu
     private lateinit var mPopMenu: PopupWindow
     //当前周
@@ -61,6 +54,7 @@ class ClassScheduleActivity : BaseActivity() {
                 //修改周次
                 R.id.item_week -> showSelectWeekPicker()
                 R.id.item_term -> showSelectTermPicker()
+                R.id.item_share_schedule -> shareClassSchedule()
                 R.id.item_theme -> startActivityForResult(
                         ClassScheduleStyleActivity.newIntent(this@ClassScheduleActivity),
                         REQUEST_STYLE
@@ -88,7 +82,7 @@ class ClassScheduleActivity : BaseActivity() {
         //周次选择Popup
         tv_week.setOnClickListener {
             if (mIsLoadCourse) {
-                mPopWeek.showAsDropDown(it, mPopWeekYoff, 0)
+                mPopWeek.show(it, PopupWindowBuilder.Direction.BOTTOM)
             }
         }
 
@@ -100,7 +94,7 @@ class ClassScheduleActivity : BaseActivity() {
         //菜单
         iv_menu.setOnClickListener {
             if (mIsLoadCourse) {
-                mPopMenu.showAsDropDown(it)
+                mPopMenu.show(it)
             }
         }
 
@@ -176,62 +170,62 @@ class ClassScheduleActivity : BaseActivity() {
     }
 
     private fun initWeekPop() {
-        val contentView=layoutInflater.inflate(R.layout.layout_week_pop, null)
-        val lvWeek=contentView.lv_week as ListView
-        val adapter = ArrayAdapter(
+        mPopWeek=PopupWindowBuilder(
                 this,
-                R.layout.item_week,
-                Array(25){
-                    val week=it+1
-                    "第${week}周"
-                })
-        lvWeek.adapter=adapter
-        lvWeek.setOnItemClickListener {
-            parent, view, position, id ->
-            mPopWeek.dismiss()
-            val week=position+1
-            if(week!=mLastWeek){//不是上次显示的周
-                if (week==mCurrentWeek) {
-                    showCurrentWeekClass()
-                }else {
-                    mShowFragment=ClassScheduleFragment.newInstance(
-                            mCourseLiteList,
-                            week,
-                            false
-                    )
-                    getFragmentTransaction()
-                            .replace(R.id.container, mShowFragment)
-                            .commit()
-                    fab_back.visibility= VISIBLE
+                DisplayHelper.dpToPx(140),
+                DisplayHelper.dpToPx( 200)
+        ).setContentView(R.layout.layout_week_pop, {
+            contentView ->
+            val lvWeek=contentView.lv_week as ListView
+            val adapter = ArrayAdapter(
+                    this,
+                    R.layout.item_week,
+                    Array(25){
+                        val week=it+1
+                        "第${week}周"
+                    })
+            lvWeek.adapter=adapter
+            lvWeek.setOnItemClickListener {
+                parent, view, position, id ->
+                mPopWeek.dismiss()
+                val week=position+1
+                if(week!=mLastWeek){//不是上次显示的周
+                    if (week==mCurrentWeek) {
+                        showCurrentWeekClass()
+                    }else {
+                        mShowFragment=ClassScheduleFragment.newInstance(
+                                mCourseLiteList,
+                                week,
+                                false
+                        )
+                        getFragmentTransaction()
+                                .replace(R.id.container, mShowFragment)
+                                .commit()
+                        fab_back.visibility= VISIBLE
+                    }
+                    tv_week.text="第${week}周"
+                    mLastWeek=week
                 }
-                tv_week.text="第${week}周"
-                mLastWeek=week
             }
-        }
-
-        mPopWeek=PopupWindow(this)
-        mPopWeek.width= DisplayHelper.dpToPx(140)
-        mPopWeek.height=DisplayHelper.dpToPx( 200)
-        mPopWeek.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        mPopWeek.isOutsideTouchable=true
-        mPopWeek.isFocusable=true
-        mPopWeek.contentView=contentView
+        })
+                .setOutsideTouchable(true)
+                .setFocusable(true)
+                .create()
     }
 
     private fun initMenuPop() {
-        val contentView=layoutInflater.inflate(R.layout.layout_class_schedule_menu_pop, null)
-        mPopMenu=PopupWindow(this)
-        mPopMenu.width= DisplayHelper.dpToPx(160)
-        mPopMenu.height=ViewGroup.LayoutParams.WRAP_CONTENT
-        mPopMenu.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        mPopMenu.isOutsideTouchable=true
-        mPopMenu.isFocusable=true
-        mPopMenu.contentView=contentView
-
-        contentView.item_week.setOnClickListener(mMenuItemClickListener)
-        contentView.item_term.setOnClickListener(mMenuItemClickListener)
-        contentView.item_add_course.setOnClickListener(mMenuItemClickListener)
-        contentView.item_theme.setOnClickListener(mMenuItemClickListener)
+        mPopMenu= PopupWindowBuilder(this, DisplayHelper.dpToPx(160))
+                .setContentView(R.layout.layout_class_schedule_menu_pop, {
+                    contentView ->
+                    contentView.item_week.setOnClickListener(mMenuItemClickListener)
+                    contentView.item_term.setOnClickListener(mMenuItemClickListener)
+                    contentView.item_add_course.setOnClickListener(mMenuItemClickListener)
+                    contentView.item_theme.setOnClickListener(mMenuItemClickListener)
+                    contentView.item_share_schedule.setOnClickListener(mMenuItemClickListener)
+                })
+                .setOutsideTouchable(true)
+                .setFocusable(true)
+                .create()
     }
 
     private fun showCurrentWeekClass() {
@@ -326,5 +320,16 @@ class ClassScheduleActivity : BaseActivity() {
         super.onActivityResult(requestCode, resultCode, data)
     }
 
+    private fun shareClassSchedule() {
+        val bitmap=DrawableHelper.createBitmapFromView(ll_root)
+        val bitmapPath = MediaStore.Images.Media.insertImage(
+                getContentResolver(), bitmap,"课表", null
+        )
+        val bitmapUri = Uri.parse(bitmapPath)
+        val intent = Intent(Intent.ACTION_SEND)
+        intent.type = "image/png"
+        intent.putExtra(Intent.EXTRA_STREAM, bitmapUri)
+        startActivity(Intent.createChooser(intent, "Share"))
+    }
 }
 

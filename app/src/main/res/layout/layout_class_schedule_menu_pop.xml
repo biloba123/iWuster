@@ -60,4 +60,17 @@
         android:clickable="true"
         android:text="@string/theme"
         android:gravity="center_vertical"/>
+
+    <TextView
+        android:id="@+id/item_share_schedule"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/small_spacing"
+        android:textColor="@color/text_default"
+        android:drawableLeft="@drawable/ic_share"
+        android:drawablePadding="@dimen/small_spacing"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:text="@string/share_class_schedule"
+        android:gravity="center_vertical"/>
 </LinearLayout>

@@ -43,4 +43,5 @@
     <string name="corner">圆角大小</string>
     <string name="sp_alpha">alpha</string>
     <string name="sp_corner">corner</string>
+    <string name="share_class_schedule">分享课表</string>
 </resources>

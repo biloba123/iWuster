@@ -40,7 +40,7 @@ class PopupWindowBuilder(
         mPopupWindow.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
     }
 
-    fun setContentView(layoutId: Int, initView:(View)->Unit): PopupWindowBuilder{
+    fun setContentView(layoutId: Int, initView:(contentView: View)->Unit): PopupWindowBuilder{
         val contentView=LayoutInflater.from(mContext).inflate(layoutId, null)
         initView(contentView)
         mPopupWindow.contentView=contentView
@@ -72,32 +72,28 @@ class PopupWindowBuilder(
 
     fun create()=mPopupWindow
 
+    fun show(view: View, direction: PopupWindowBuilder.Direction?=null)
+            =create().show(view, direction)
+
 }
 
-public fun PopupWindow.show(view: View, direction: PopupWindowBuilder.Direction?=null){
+fun PopupWindow.show(view: View, direction: PopupWindowBuilder.Direction?=null){
     if (direction!=null){
-
-        fun getBottomX(view: View)=(view.width-this.width)/2
-        fun getBottomY(view: View)=0
-        fun getTopX(view: View)=(view.width-this.width)/2
-        fun getTopY(view: View)=(view.height+this.height)*-1
-        fun getLeftX(view: View)=this.width*-1
-        fun getLeftY(view: View)=(view.height+this.height)/-2
-        fun getRightX(view: View)=view.width
-        fun getRightY(view: View)=(view.height+this.height)/-2
-
         when(direction){
             PopupWindowBuilder.Direction.TOP ->
-                this.showAsDropDown(view, getTopX(view), getTopY(view))
+                this.showAsDropDown(view, getHorizontalCenterX(view), (view.height+height)*-1)
             PopupWindowBuilder.Direction.BOTTOM ->
-                this.showAsDropDown(view, getBottomX(view), getBottomY(view))
+                this.showAsDropDown(view, getHorizontalCenterX(view), 0)
             PopupWindowBuilder.Direction.LEFT ->
-                this.showAsDropDown(view, getLeftX(view), getLeftY(view))
+                this.showAsDropDown(view, this.width*-1, getVerticalCenterY(view))
             PopupWindowBuilder.Direction.RIGHT ->
-                this.showAsDropDown(view, getRightX(view), getRightY(view))
+                this.showAsDropDown(view, view.width, getVerticalCenterY(view))
         }
     }else{
         this.showAsDropDown(view)
     }
-
 }
+
+fun PopupWindow.getHorizontalCenterX(view: View)=(view.width-this.width)/2
+fun PopupWindow.getVerticalCenterY(view: View)=(view.height+this.height)/-2
+
