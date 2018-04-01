@@ -37,7 +37,6 @@ fun getResult(funcation: String, soapObject: SoapObject, n: Int): String {
     localSoapSerializationEnvelope.setOutputSoapObject(soapObject)
     HttpTransportSE(endPoint).call(soapAction + funcation, localSoapSerializationEnvelope)
     return (localSoapSerializationEnvelope.bodyIn as SoapObject).getProperty("out").toString()
-
 }
 
 internal  fun  getYxkc(xh: String, xnxq: String): String {
@@ -49,4 +48,10 @@ internal  fun  getYxkc(xh: String, xnxq: String): String {
 
 internal fun getXnxq(): String {
     return getResult("getpjxnxq", SoapObject(nameSpace, "getpjxnxq"), 0)
+}
+
+internal fun getXscjcx(xh: String): String {
+    val localSoapObject = SoapObject(nameSpace, "getxscj")
+    localSoapObject.addProperty("in0", xh)
+    return getResult("getxscj", localSoapObject, 1)
 }

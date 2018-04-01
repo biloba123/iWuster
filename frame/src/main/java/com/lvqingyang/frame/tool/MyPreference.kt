@@ -108,7 +108,7 @@ class MyPreference private constructor(context: Context) {
             if (sMPreference == null) {
                 synchronized(MyPreference::class) {
                     if (sMPreference == null) {
-                        sMPreference = MyPreference(context)
+                        sMPreference = MyPreference(context.applicationContext)
                     }
                 }
             }

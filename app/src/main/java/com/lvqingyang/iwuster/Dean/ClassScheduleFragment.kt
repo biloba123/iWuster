@@ -9,7 +9,7 @@ import com.lvqingyang.iwuster.R
 import com.lvqingyang.iwuster.bean.CourseLite
 import com.lvqingyang.iwuster.helper.getWeekOfDate
 import com.lvqingyang.iwuster.view.CourseTextView
-import kotlinx.android.synthetic.main.fragment_class_schedule.*
+import kotlinx.android.synthetic.main.class_schedule_fragment.*
 import org.jetbrains.anko.toast
 import java.util.*
 
@@ -62,7 +62,7 @@ class ClassScheduleFragment : BaseFragment() {
     }
 
 
-    override fun getLayoutResID()= R.layout.fragment_class_schedule
+    override fun getLayoutResID()= R.layout.class_schedule_fragment
 
     override fun initListener() {
     }
@@ -86,7 +86,7 @@ class ClassScheduleFragment : BaseFragment() {
     override fun showData() {
         //显示当前是周几
         if (mIsCurrentWeek) {
-            ll_week_name.getChildAt(getWeekOfDate()).setBackgroundResource(R.drawable.shape_current_week)
+            ll_week_name.getChildAt(getWeekOfDate()).setBackgroundResource(R.drawable.class_schedule_current_week_bg)
         }
 
         var lastCl: CourseLite?=null

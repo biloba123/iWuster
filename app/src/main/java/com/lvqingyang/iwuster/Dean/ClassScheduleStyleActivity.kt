@@ -8,7 +8,7 @@ import com.lvqingyang.frame.base.BaseActivity
 import com.lvqingyang.frame.helper.str
 import com.lvqingyang.iwuster.R
 import com.lvqingyang.iwuster.drawable.CourseBgDrawable
-import kotlinx.android.synthetic.main.activity_class_schedule_style.*
+import kotlinx.android.synthetic.main.class_schedule_style_activity.*
 
 class ClassScheduleStyleActivity : BaseActivity() {
     private var mCorner=15f
@@ -21,7 +21,7 @@ class ClassScheduleStyleActivity : BaseActivity() {
         public fun newIntent(c: Context)=Intent(c, ClassScheduleStyleActivity::class.java)
     }
 
-    override fun getLayoutResID()=R.layout.activity_class_schedule_style
+    override fun getLayoutResID()=R.layout.class_schedule_style_activity
 
     override fun initListener() {
         sb_alpha.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener {

@@ -44,8 +44,14 @@ dependencies {
 
     implementation 'com.contrarywind:Android-PickerView:3.2.7'
 
-    compile 'org.litepal.android:core:1.6.1'
-    compile project(path: ':frame')
+    implementation("com.github.hotchemi:permissionsdispatcher:3.1.0") {
+        // if you don't use android.app.Fragment you can exclude support for them
+        exclude module: "support-v13"
+    }
+    annotationProcessor "com.github.hotchemi:permissionsdispatcher-processor:3.1.0"
+
+    implementation 'org.litepal.android:core:1.6.1'
+    implementation project(path: ':frame')
 }
 repositories {
     mavenCentral()

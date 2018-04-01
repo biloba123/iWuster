@@ -5,7 +5,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
 import com.lvqingyang.iwuster.R
-import kotlinx.android.synthetic.main.layout_discover_item.view.*
+import kotlinx.android.synthetic.main.discover_item_view.view.*
 
 /**
  * 一句话功能描述
@@ -21,7 +21,7 @@ import kotlinx.android.synthetic.main.layout_discover_item.view.*
 class DiscoverItem(context: Context?, attrs: AttributeSet?) : FrameLayout(context, attrs) {
 
     init {
-        LayoutInflater.from(context).inflate(R.layout.layout_discover_item, this)
+        LayoutInflater.from(context).inflate(R.layout.discover_item_view, this)
         if (context!=null && attrs != null) {
             val arr=context.theme.obtainStyledAttributes(
                     attrs, R.styleable.DiscoverItem, 0, 0)

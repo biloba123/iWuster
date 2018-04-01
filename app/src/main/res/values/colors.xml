@@ -1,38 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#81c784</color>
-    <color name="colorPrimaryDark">#519657</color>
-    <color name="colorPrimaryLight">#b2fab4</color>
-    <color name="colorSecondary">#64b5f6</color>
-    <color name="colorSecondaryDark">#2286c3</color>
-    <color name="colorSecondaryLight">#9be7ff</color>
+    <color name="primary_color">#ff81c784</color>
+    <color name="primary_dark_color">#ff519657</color>
+    <color name="primary_light_color">#ffb2fab4</color>
+    <color name="secondary_color">#ff64b5f6</color>
+    <color name="secondary_dark_color">#ff2286c3</color>
+    <color name="secondary_light_color">#ff9be7ff</color>
 
-    <color name="bg_windows">#f5f5f5</color>
-    <color name="class_index">#50ededed</color>
-    <color name="text_week">#385772</color>
-    <color name="text_index">#71889b</color>
-    <color name="class_current">#502db7b5</color>
-    <color name="week_div">#80d7d9da</color>
+    <color name="windows_bg_color">#fff5f5f5</color>
+    <color name="class_schedule_class_index_color">#50ededed</color>
+    <color name="class_schedule_class_text_color">#ff71889b</color>
+    <color name="class_schedule_week_text_color">#ff385772</color>
+    <color name="class_schedule_current_class_bg_color">#502db7b5</color>
+    <color name="class_schedule_week_div_color">#80d7d9da</color>
 
-    <color name="course_color_01">#168eea</color>
-    <color name="course_color_02">#1fadc5</color>
-    <color name="course_color_03">#00a78e</color>
-    <color name="course_color_04">#00a950</color>
-    <color name="course_color_05">#fbc02d</color>
-    <color name="course_color_06">#ff7200</color>
-    <color name="course_color_07">#ff4c4c</color>
-    <color name="course_color_08">#ea4c89</color>
-    <color name="course_color_09">#a26eea</color>
-    <color name="course_color_10">#7fd400</color>
-    <color name="course_color_11">#fc54ba</color>
-    <color name="course_color_12">#ff6a6a</color>
+    <color name="course_color_01">#ff168eea</color>
+    <color name="course_color_02">#ff1fadc5</color>
+    <color name="course_color_03">#ff00a78e</color>
+    <color name="course_color_04">#ff00a950</color>
+    <color name="course_color_05">#fffbc02d</color>
+    <color name="course_color_06">#ffff7200</color>
+    <color name="course_color_07">#ffff4c4c</color>
+    <color name="course_color_08">#ffea4c89</color>
+    <color name="course_color_09">#ffa26eea</color>
+    <color name="course_color_10">#ff7fd400</color>
+    <color name="course_color_11">#fffc54ba</color>
+    <color name="course_color_12">#ffff6a6a</color>
     <color name="course_complete">#ededed</color>
 
-    <color name="ic_discover_1">#bb3bbf9f</color>
-    <color name="ic_discover_light_1">#BB3FD0AD</color>
-    <color name="ic_discover_2">#bb3bbf9f</color>
-    <color name="ic_discover_light_2">#BB3FD0AD</color>
-    <color name="ic_discover_3">#bb3bbf9f</color>
-    <color name="ic_discover_light_3">#BB3FD0AD</color>
+    <color name="discover_ic_color_1">#bb3bbf9f</color>
+    <color name="discover_ic_light_color_1">#BB3FD0AD</color>
+    <color name="discover_ic_color_2">#bb3bbf9f</color>
+    <color name="discover_ic_light_color_2">#BB3FD0AD</color>
+    <color name="discover_ic_color_3">#bb3bbf9f</color>
+    <color name="discover_ic_light_color_3">#BB3FD0AD</color>
 
 </resources>

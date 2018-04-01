@@ -35,4 +35,4 @@ fun Context.isMobileConnected()=NetWorkUtils.isMobileConnected(this)
 /**
  * 获取SharedPreferences
  */
-fun Context.getPreference()=MyPreference.getInstance(this.applicationContext)
+fun Context.getPreference()=MyPreference.getInstance(this)

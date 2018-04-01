@@ -18,7 +18,7 @@
                 android:paddingTop="@dimen/small_spacing"
                 android:paddingBottom="@dimen/small_spacing"
                 android:gravity="center_horizontal|center_vertical"
-                android:background="@color/class_index"
+                android:background="@color/class_schedule_class_index_color"
                 android:textColor="@color/text_default"
                 android:text="" />
             <TextView
@@ -27,9 +27,9 @@
                 android:layout_weight="1"
                 android:paddingTop="@dimen/small_spacing"
                 android:paddingBottom="@dimen/small_spacing"
-                android:background="@color/class_index"
+                android:background="@color/class_schedule_class_index_color"
                 android:gravity="center_horizontal|center_vertical"
-                android:textColor="@color/text_week"
+                android:textColor="@color/class_schedule_week_text_color"
                 android:text="周一" />
             <TextView
                 android:layout_width="0dp"
@@ -38,8 +38,8 @@
                 android:paddingTop="@dimen/small_spacing"
                 android:paddingBottom="@dimen/small_spacing"
                 android:gravity="center_horizontal|center_vertical"
-                android:background="@color/class_index"
-                android:textColor="@color/text_week"
+                android:background="@color/class_schedule_class_index_color"
+                android:textColor="@color/class_schedule_week_text_color"
                 android:text="周二" />
             <TextView
                 android:layout_width="0dp"
@@ -48,8 +48,8 @@
                 android:paddingTop="@dimen/small_spacing"
                 android:paddingBottom="@dimen/small_spacing"
                 android:gravity="center_horizontal|center_vertical"
-                android:background="@color/class_index"
-                android:textColor="@color/text_week"
+                android:background="@color/class_schedule_class_index_color"
+                android:textColor="@color/class_schedule_week_text_color"
                 android:text="周三" />
             <TextView
                 android:layout_width="0dp"
@@ -58,8 +58,8 @@
                 android:paddingTop="@dimen/small_spacing"
                 android:paddingBottom="@dimen/small_spacing"
                 android:gravity="center_horizontal|center_vertical"
-                android:background="@color/class_index"
-                android:textColor="@color/text_week"
+                android:background="@color/class_schedule_class_index_color"
+                android:textColor="@color/class_schedule_week_text_color"
                 android:text="周四" />
             <TextView
                 android:layout_width="0dp"
@@ -68,8 +68,8 @@
                 android:paddingTop="@dimen/small_spacing"
                 android:paddingBottom="@dimen/small_spacing"
                 android:gravity="center_horizontal|center_vertical"
-                android:background="@color/class_index"
-                android:textColor="@color/text_week"
+                android:background="@color/class_schedule_class_index_color"
+                android:textColor="@color/class_schedule_week_text_color"
                 android:text="周五" />
             <TextView
                 android:layout_width="0dp"
@@ -78,8 +78,8 @@
                 android:paddingTop="@dimen/small_spacing"
                 android:paddingBottom="@dimen/small_spacing"
                 android:gravity="center_horizontal|center_vertical"
-                android:background="@color/class_index"
-                android:textColor="@color/text_week"
+                android:background="@color/class_schedule_class_index_color"
+                android:textColor="@color/class_schedule_week_text_color"
                 android:text="周六" />
             <TextView
                 android:layout_width="0dp"
@@ -88,15 +88,15 @@
                 android:paddingTop="@dimen/small_spacing"
                 android:paddingBottom="@dimen/small_spacing"
                 android:gravity="center_horizontal|center_vertical"
-                android:background="@color/class_index"
-                android:textColor="@color/text_week"
+                android:background="@color/class_schedule_class_index_color"
+                android:textColor="@color/class_schedule_week_text_color"
                 android:text="周日" />
 
         </LinearLayout>
         <View
             android:layout_width="match_parent"
             android:layout_height="0.25dp"
-            android:background="@color/week_div"/>
+            android:background="@color/class_schedule_week_div_color"/>
         <android.support.v4.widget.NestedScrollView
             android:id="@+id/scrollPanel"
             android:layout_width="match_parent"
@@ -118,96 +118,96 @@
                         android:layout_width="fill_parent"
                         android:layout_height="@dimen/weekItemHeight"
                         android:gravity="center_horizontal|center_vertical"
-                        android:background="@color/class_index"
-                        android:textColor="@color/text_index"
+                        android:background="@color/class_schedule_class_index_color"
+                        android:textColor="@color/class_schedule_class_text_color"
                         android:text="1" />
                     <TextView
                         android:layout_width="fill_parent"
                         android:layout_height="@dimen/weekItemHeight"
                         android:gravity="center_horizontal|center_vertical"
                         android:text="2"
-                        android:background="@color/class_index"
-                        android:textColor="@color/text_index"
+                        android:background="@color/class_schedule_class_index_color"
+                        android:textColor="@color/class_schedule_class_text_color"
                         />
                     <TextView
                         android:layout_width="fill_parent"
                         android:layout_height="@dimen/weekItemHeight"
                         android:gravity="center_horizontal|center_vertical"
                         android:text="3"
-                        android:background="@color/class_index"
-                        android:textColor="@color/text_index"
+                        android:background="@color/class_schedule_class_index_color"
+                        android:textColor="@color/class_schedule_class_text_color"
                         />
                     <TextView
                         android:layout_width="fill_parent"
                         android:layout_height="@dimen/weekItemHeight"
                         android:gravity="center_horizontal|center_vertical"
                         android:text="4"
-                        android:background="@color/class_index"
-                        android:textColor="@color/text_index"
+                        android:background="@color/class_schedule_class_index_color"
+                        android:textColor="@color/class_schedule_class_text_color"
                         />
                     <TextView
                         android:layout_width="fill_parent"
                         android:layout_height="@dimen/weekItemHeight"
                         android:gravity="center_horizontal|center_vertical"
                         android:text="5"
-                        android:background="@color/class_index"
-                        android:textColor="@color/text_index"
+                        android:background="@color/class_schedule_class_index_color"
+                        android:textColor="@color/class_schedule_class_text_color"
                         />
                     <TextView
                         android:layout_width="fill_parent"
                         android:layout_height="@dimen/weekItemHeight"
                         android:gravity="center_horizontal|center_vertical"
                         android:text="6"
-                        android:background="@color/class_index"
-                        android:textColor="@color/text_index"
+                        android:background="@color/class_schedule_class_index_color"
+                        android:textColor="@color/class_schedule_class_text_color"
                         />
                     <TextView
                         android:layout_width="fill_parent"
                         android:layout_height="@dimen/weekItemHeight"
                         android:gravity="center_horizontal|center_vertical"
                         android:text="7"
-                        android:background="@color/class_index"
-                        android:textColor="@color/text_index"
+                        android:background="@color/class_schedule_class_index_color"
+                        android:textColor="@color/class_schedule_class_text_color"
                         />
                     <TextView
                         android:layout_width="fill_parent"
                         android:layout_height="@dimen/weekItemHeight"
                         android:gravity="center_horizontal|center_vertical"
                         android:text="8"
-                        android:background="@color/class_index"
-                        android:textColor="@color/text_index"
+                        android:background="@color/class_schedule_class_index_color"
+                        android:textColor="@color/class_schedule_class_text_color"
                         />
                     <TextView
                         android:layout_width="fill_parent"
                         android:layout_height="@dimen/weekItemHeight"
                         android:gravity="center_horizontal|center_vertical"
                         android:text="9"
-                        android:background="@color/class_index"
-                        android:textColor="@color/text_index"
+                        android:background="@color/class_schedule_class_index_color"
+                        android:textColor="@color/class_schedule_class_text_color"
                         />
                     <TextView
                         android:layout_width="fill_parent"
                         android:layout_height="@dimen/weekItemHeight"
                         android:gravity="center_horizontal|center_vertical"
                         android:text="10"
-                        android:background="@color/class_index"
-                        android:textColor="@color/text_index"
+                        android:background="@color/class_schedule_class_index_color"
+                        android:textColor="@color/class_schedule_class_text_color"
                         />
                     <TextView
                         android:layout_width="fill_parent"
                         android:layout_height="@dimen/weekItemHeight"
                         android:gravity="center_horizontal|center_vertical"
                         android:text="11"
-                        android:background="@color/class_index"
-                        android:textColor="@color/text_index"
+                        android:background="@color/class_schedule_class_index_color"
+                        android:textColor="@color/class_schedule_class_text_color"
                         />
                     <TextView
                         android:layout_width="fill_parent"
                         android:layout_height="@dimen/weekItemHeight"
                         android:gravity="center_horizontal|center_vertical"
                         android:text="12"
-                        android:background="@color/class_index"
-                        android:textColor="@color/text_index"
+                        android:background="@color/class_schedule_class_index_color"
+                        android:textColor="@color/class_schedule_class_text_color"
                         />
                 </LinearLayout>
                 <!-- 周一到周日的排列 -->

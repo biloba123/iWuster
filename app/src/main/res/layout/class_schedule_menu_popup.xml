@@ -7,7 +7,7 @@
               android:layout_marginEnd="@dimen/small_spacing"
               android:showDividers="middle"
               android:divider="@drawable/divider_horizontal"
-              android:background="@drawable/shape_pop">
+              android:background="@drawable/class_schedule_popup_menu_bg">
 
     <TextView
         android:id="@+id/item_week"

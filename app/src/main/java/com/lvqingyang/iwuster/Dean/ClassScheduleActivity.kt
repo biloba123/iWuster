@@ -20,10 +20,13 @@ import com.lvqingyang.iwuster.bean.CourseLite
 import com.lvqingyang.iwuster.helper.*
 import com.lvqingyang.iwuster.other.NoDataException
 import com.lvqingyang.iwuster.other.NoNetworkException
-import kotlinx.android.synthetic.main.activity_class_schedule.*
-import kotlinx.android.synthetic.main.layout_class_schedule_menu_pop.view.*
-import kotlinx.android.synthetic.main.layout_week_pop.view.*
+import kotlinx.android.synthetic.main.class_schedule_activity.*
+import kotlinx.android.synthetic.main.class_schedule_menu_popup.view.*
+import kotlinx.android.synthetic.main.week_popup.view.*
+import permissions.dispatcher.NeedsPermission
+import permissions.dispatcher.RuntimePermissions
 
+@RuntimePermissions
 class ClassScheduleActivity : BaseActivity() {
 
     //课表真正显示的Fragment
@@ -76,7 +79,7 @@ class ClassScheduleActivity : BaseActivity() {
         }
     }
 
-    override fun getLayoutResID()= R.layout.activity_class_schedule
+    override fun getLayoutResID()= R.layout.class_schedule_activity
 
     override fun initListener() {
         //周次选择Popup
@@ -174,12 +177,12 @@ class ClassScheduleActivity : BaseActivity() {
                 this,
                 DisplayHelper.dpToPx(140),
                 DisplayHelper.dpToPx( 200)
-        ).setContentView(R.layout.layout_week_pop, {
+        ).setContentView(R.layout.week_popup, {
             contentView ->
             val lvWeek=contentView.lv_week as ListView
             val adapter = ArrayAdapter(
                     this,
-                    R.layout.item_week,
+                    R.layout.week_list_item,
                     Array(25){
                         val week=it+1
                         "第${week}周"
@@ -215,7 +218,7 @@ class ClassScheduleActivity : BaseActivity() {
 
     private fun initMenuPop() {
         mPopMenu= PopupWindowBuilder(this, DisplayHelper.dpToPx(160))
-                .setContentView(R.layout.layout_class_schedule_menu_pop, {
+                .setContentView(R.layout.class_schedule_menu_popup, {
                     contentView ->
                     contentView.item_week.setOnClickListener(mMenuItemClickListener)
                     contentView.item_term.setOnClickListener(mMenuItemClickListener)
@@ -249,8 +252,8 @@ class ClassScheduleActivity : BaseActivity() {
                 showCurrentWeekClass()
             }
         }
-                .setCancelColor(resources.getColor(R.color.colorSecondary))
-                .setSubmitColor(resources.getColor(R.color.colorSecondary))
+                .setCancelColor(resources.getColor(R.color.secondary_color))
+                .setSubmitColor(resources.getColor(R.color.secondary_color))
                 .setTitleText(str(R.string.current_zc))
                 .setLinkage(false)//设置是否联动，默认true
                 .setSelectOptions(mCurrentWeek-1)  //设置默认选中项
@@ -271,8 +274,8 @@ class ClassScheduleActivity : BaseActivity() {
                 reloadCourse(options1)
             }
         }
-                .setCancelColor(resources.getColor(R.color.colorSecondary))
-                .setSubmitColor(resources.getColor(R.color.colorSecondary))
+                .setCancelColor(resources.getColor(R.color.secondary_color))
+                .setSubmitColor(resources.getColor(R.color.secondary_color))
                 .setTitleText(str(R.string.current_term))
                 .setLinkage(false)//设置是否联动，默认true
                 .setSelectOptions(term)  //设置默认选中项
@@ -320,6 +323,7 @@ class ClassScheduleActivity : BaseActivity() {
         super.onActivityResult(requestCode, resultCode, data)
     }
 
+    @NeedsPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
     private fun shareClassSchedule() {
         val bitmap=DrawableHelper.createBitmapFromView(ll_root)
         val bitmapPath = MediaStore.Images.Media.insertImage(
