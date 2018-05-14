@@ -37,24 +37,24 @@ class ClassScheduleActivity : BaseActivity() {
     //右侧menu
     private lateinit var mPopMenu: PopupWindow
     //当前周
-    private var mCurrentWeek=1
+    private var mCurrentWeek = 1
     //上次显示的周
-    private var mLastWeek=1
+    private var mLastWeek = 1
     //课表数据
     private lateinit var mCourseLiteList: List<CourseLite>
     //修改学期周次选择器的数据，懒加载
-    private val mTerms: List<String> by lazy{ resources.getStringArray(R.array.terms).asList()}
+    private val mTerms: List<String> by lazy { resources.getStringArray(R.array.terms).asList() }
     private val mWeeks: List<String> by lazy {
-        List(25){ "第${it+1}周" }
+        List(25) { "第${it + 1}周" }
     }
     //是否加载过课表
-    private var mIsLoadCourse=false
+    private var mIsLoadCourse = false
     //右侧menu监听事件
-    private val mMenuItemClickListener=object: View.OnClickListener{
+    private val mMenuItemClickListener = object : View.OnClickListener {
         override fun onClick(v: View?) {
             mPopMenu.dismiss()
-            when(v?.id){
-                //修改周次
+            when (v?.id) {
+            //修改周次
                 R.id.item_week -> showSelectWeekPicker()
                 R.id.item_term -> showSelectTermPicker()
                 R.id.item_share_schedule -> shareClassSchedule()
@@ -68,18 +68,18 @@ class ClassScheduleActivity : BaseActivity() {
     }
 
     companion object {
-        private val REQUEST_STYLE=0
+        private val REQUEST_STYLE = 0
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //不重复添加Fragment
-        if (savedInstanceState==null&&mIsLoadCourse) {
+        if (savedInstanceState == null && mIsLoadCourse) {
             showCurrentWeekClass()
         }
     }
 
-    override fun getLayoutResID()= R.layout.class_schedule_activity
+    override fun getLayoutResID() = R.layout.class_schedule_activity
 
     override fun initListener() {
         //周次选择Popup
@@ -101,7 +101,7 @@ class ClassScheduleActivity : BaseActivity() {
             }
         }
 
-        ev.setOnRetryListener{
+        ev.setOnRetryListener {
             loadCourse()
         }
 
@@ -109,10 +109,10 @@ class ClassScheduleActivity : BaseActivity() {
     }
 
     override fun loadData() {
-        mIsLoadCourse=myPreference.getBool(str(R.string.is_load_course))
+        mIsLoadCourse = myPreference.getBool(str(R.string.is_load_course))
         if (mIsLoadCourse) {
             initCourses()
-        }else{
+        } else {
             loadCourse()
         }
 
@@ -128,15 +128,15 @@ class ClassScheduleActivity : BaseActivity() {
 //        toast(R.string.load_course)
         ev.loading()
         //成功
-        val succ: ()->Unit={
+        val succ: () -> Unit = {
             ev.success()
             initCourses()
             showCurrentWeekClass()
         }
         //失败
-        val error: (Exception)->Unit={
+        val error: (Exception) -> Unit = {
             it.printStackTrace()
-            when(it){
+            when (it) {
                 is NoNetworkException -> ev.noConnection()
                 is NoDataException -> {
                     ev.empty()
@@ -156,15 +156,15 @@ class ClassScheduleActivity : BaseActivity() {
     }
 
     //初始化课表数据
-    private fun initCourses(isReload: Boolean=false) {
-        mCourseLiteList= getShowCourse()
+    private fun initCourses(isReload: Boolean = false) {
+        mCourseLiteList = getShowCourse()
         //更新周次
-        mCurrentWeek= getCurrentWeek(this)
-        mLastWeek=mCurrentWeek
+        mCurrentWeek = getCurrentWeek(this)
+        mLastWeek = mCurrentWeek
 
         if (isReload) {//重新加载课表时正确显示
-            mFragment=ClassScheduleFragment.newInstance(mCourseLiteList, mCurrentWeek)
-        }else {
+            mFragment = ClassScheduleFragment.newInstance(mCourseLiteList, mCurrentWeek)
+        } else {
             if (mFragment == null) {
                 mFragment = findFragment()
                         ?: ClassScheduleFragment.newInstance(mCourseLiteList, mCurrentWeek)
@@ -173,30 +173,28 @@ class ClassScheduleActivity : BaseActivity() {
     }
 
     private fun initWeekPop() {
-        mPopWeek=PopupWindowBuilder(
+        mPopWeek = PopupWindowBuilder(
                 this,
                 DisplayHelper.dpToPx(140),
-                DisplayHelper.dpToPx( 200)
-        ).setContentView(R.layout.week_popup, {
-            contentView ->
-            val lvWeek=contentView.lv_week as ListView
+                DisplayHelper.dpToPx(200)
+        ).setContentView(R.layout.week_popup, { contentView ->
+            val lvWeek = contentView.lv_week as ListView
             val adapter = ArrayAdapter(
                     this,
                     R.layout.week_list_item,
-                    Array(25){
-                        val week=it+1
+                    Array(25) {
+                        val week = it + 1
                         "第${week}周"
                     })
-            lvWeek.adapter=adapter
-            lvWeek.setOnItemClickListener {
-                parent, view, position, id ->
+            lvWeek.adapter = adapter
+            lvWeek.setOnItemClickListener { parent, view, position, id ->
                 mPopWeek.dismiss()
-                val week=position+1
-                if(week!=mLastWeek){//不是上次显示的周
-                    if (week==mCurrentWeek) {
+                val week = position + 1
+                if (week != mLastWeek) {//不是上次显示的周
+                    if (week == mCurrentWeek) {
                         showCurrentWeekClass()
-                    }else {
-                        mShowFragment=ClassScheduleFragment.newInstance(
+                    } else {
+                        mShowFragment = ClassScheduleFragment.newInstance(
                                 mCourseLiteList,
                                 week,
                                 false
@@ -204,10 +202,10 @@ class ClassScheduleActivity : BaseActivity() {
                         getFragmentTransaction()
                                 .replace(R.id.container, mShowFragment)
                                 .commit()
-                        fab_back.visibility= VISIBLE
+                        fab_back.visibility = VISIBLE
                     }
-                    tv_week.text="第${week}周"
-                    mLastWeek=week
+                    tv_week.text = "第${week}周"
+                    mLastWeek = week
                 }
             }
         })
@@ -217,9 +215,8 @@ class ClassScheduleActivity : BaseActivity() {
     }
 
     private fun initMenuPop() {
-        mPopMenu= PopupWindowBuilder(this, DisplayHelper.dpToPx(160))
-                .setContentView(R.layout.class_schedule_menu_popup, {
-                    contentView ->
+        mPopMenu = PopupWindowBuilder(this, DisplayHelper.dpToPx(160))
+                .setContentView(R.layout.class_schedule_menu_popup, { contentView ->
                     contentView.item_week.setOnClickListener(mMenuItemClickListener)
                     contentView.item_term.setOnClickListener(mMenuItemClickListener)
                     contentView.item_add_course.setOnClickListener(mMenuItemClickListener)
@@ -232,23 +229,22 @@ class ClassScheduleActivity : BaseActivity() {
     }
 
     private fun showCurrentWeekClass() {
-        mIsLoadCourse=true
-        mShowFragment=mFragment
+        mIsLoadCourse = true
+        mShowFragment = mFragment
         getFragmentTransaction()
                 .replace(R.id.container, mFragment, ClassScheduleFragment::class.simpleName)
                 .commit()
-        fab_back.visibility=GONE
-        tv_week.text="第${mCurrentWeek}周"
+        fab_back.visibility = GONE
+        tv_week.text = "第${mCurrentWeek}周"
     }
 
-    private fun showSelectWeekPicker(){
+    private fun showSelectWeekPicker() {
         //条件选择器
-        val pvOptions = OptionsPickerView.Builder(this){
-            options1, options2, options3, v ->
-            if (options1!=(mCurrentWeek-1)){//更改当前周
-                mCurrentWeek=options1+1
+        val pvOptions = OptionsPickerView.Builder(this) { options1, options2, options3, v ->
+            if (options1 != (mCurrentWeek - 1)) {//更改当前周
+                mCurrentWeek = options1 + 1
                 myPreference.saveInt(str(R.string.sp_zc), mCurrentWeek)
-                mFragment= ClassScheduleFragment.newInstance(mCourseLiteList, mCurrentWeek)
+                mFragment = ClassScheduleFragment.newInstance(mCourseLiteList, mCurrentWeek)
                 showCurrentWeekClass()
             }
         }
@@ -256,7 +252,7 @@ class ClassScheduleActivity : BaseActivity() {
                 .setSubmitColor(resources.getColor(R.color.secondary_color))
                 .setTitleText(str(R.string.current_zc))
                 .setLinkage(false)//设置是否联动，默认true
-                .setSelectOptions(mCurrentWeek-1)  //设置默认选中项
+                .setSelectOptions(mCurrentWeek - 1)  //设置默认选中项
                 .isDialog(true)
                 .build()
 
@@ -265,12 +261,11 @@ class ClassScheduleActivity : BaseActivity() {
     }
 
 
-    private fun showSelectTermPicker(){
-        val term=myPreference.getInt(str(R.string.sp_term_loaded))
+    private fun showSelectTermPicker() {
+        val term = myPreference.getInt(str(R.string.sp_term_loaded))
         //条件选择器
-        val pvOptions = OptionsPickerView.Builder(this){
-            options1, options2, options3, v ->
-            if (options1!=term){
+        val pvOptions = OptionsPickerView.Builder(this) { options1, options2, options3, v ->
+            if (options1 != term) {
                 reloadCourse(options1)
             }
         }
@@ -288,7 +283,7 @@ class ClassScheduleActivity : BaseActivity() {
 
     private fun reloadCourse(term: Int) {
         MyToast.loading(this, R.string.loading)
-        val stuId=myPreference.getString(str(R.string.sp_stu_id))
+        val stuId = myPreference.getString(str(R.string.sp_stu_id))
         getClassSchedule(
                 this,
                 stuId,
@@ -302,7 +297,7 @@ class ClassScheduleActivity : BaseActivity() {
                 onError = {
                     MyToast.cancel()
                     it.printStackTrace()
-                    when(it){
+                    when (it) {
                         is NoNetworkException -> MyToast.error(this, R.string.check_network)
                         is NoDataException -> MyToast.info(this, R.string.no_data)
                     }
@@ -312,10 +307,10 @@ class ClassScheduleActivity : BaseActivity() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        when (requestCode){
-            REQUEST_STYLE -> if(resultCode== Activity.RESULT_OK) {
-                val alpha=myPreference.getFloat(str(R.string.sp_alpha), 0.5f)
-                val corner=myPreference.getFloat(str(R.string.sp_corner), 15f)
+        when (requestCode) {
+            REQUEST_STYLE -> if (resultCode == Activity.RESULT_OK) {
+                val alpha = myPreference.getFloat(str(R.string.sp_alpha), 0.5f)
+                val corner = myPreference.getFloat(str(R.string.sp_corner), 15f)
                 mShowFragment?.changeCourseBg(alpha, corner)
                 mFragment?.changeCourseBg(alpha, corner)
             }
@@ -325,9 +320,9 @@ class ClassScheduleActivity : BaseActivity() {
 
     @NeedsPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
     private fun shareClassSchedule() {
-        val bitmap=DrawableHelper.createBitmapFromView(ll_root)
+        val bitmap = DrawableHelper.createBitmapFromView(ll_root)
         val bitmapPath = MediaStore.Images.Media.insertImage(
-                getContentResolver(), bitmap,"课表", null
+                getContentResolver(), bitmap, "课表", null
         )
         val bitmapUri = Uri.parse(bitmapPath)
         val intent = Intent(Intent.ACTION_SEND)
